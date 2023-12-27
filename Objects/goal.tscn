@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5gi5a43d4sft"]
+
+[ext_resource type="Texture2D" uid="uid://dqmq2g6u06yrn" path="res://Sprites/Cross.png" id="1_pyo55"]
+
+[node name="Goal" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pyo55")

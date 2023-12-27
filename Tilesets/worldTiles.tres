@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://437nm4boj6l7"]
+
+[ext_resource type="Texture2D" uid="uid://ltgsm1mimgvk" path="res://Sprites/Ground.png" id="1_i3vtg"]
+[ext_resource type="Texture2D" uid="uid://benxh8fxvrtrl" path="res://Sprites/Grass.png" id="2_wfiwy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcgxs"]
+resource_name = "Ground"
+texture = ExtResource("1_i3vtg")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1dg5"]
+texture = ExtResource("2_wfiwy")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_gcgxs")
+sources/1 = SubResource("TileSetAtlasSource_h1dg5")

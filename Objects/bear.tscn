@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2pre57et01d5"]
+
+[ext_resource type="Script" path="res://Scripts/Bear.gd" id="1_bqbxu"]
+[ext_resource type="Texture2D" uid="uid://dvbskvvsewx0m" path="res://Sprites/Bear.png" id="1_md7vn"]
+[ext_resource type="Texture2D" uid="uid://h25bm6am1qcp" path="res://Sprites/BearCircle.png" id="2_6ykui"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2jch"]
+radius = 13.0
+height = 40.0
+
+[node name="Bear" type="CharacterBody2D" node_paths=PackedStringArray("select_highlight")]
+script = ExtResource("1_bqbxu")
+select_highlight = NodePath("Selected")
+
+[node name="BearSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_md7vn")
+
+[node name="BearCollision" type="CollisionShape2D" parent="."]
+position = Vector2(4, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s2jch")
+
+[node name="Selected" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_6ykui")

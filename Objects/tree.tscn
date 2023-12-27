@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs0gr72xtx73h"]
+
+[ext_resource type="Texture2D" uid="uid://0j131sccl8tj" path="res://Sprites/TreeFruit.png" id="1_niil5"]
+[ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/TreeEmpty.png" id="2_batdm"]
+
+[node name="Tree" type="Node2D"]
+
+[node name="TreeFruitsSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_niil5")
+
+[node name="TreeEmptySprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_batdm")
