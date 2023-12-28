@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://rys4krbobw3n"]
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="."]

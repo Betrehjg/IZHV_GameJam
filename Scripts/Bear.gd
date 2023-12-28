@@ -8,9 +8,6 @@ func _ready():
 	super._ready()
 	hit_area.monitoring = false
 
-func do_attack():
-	super.do_attack()
-
 func _on_hit_area_body_entered(body):
 	body.take_dmg(dmg)
 

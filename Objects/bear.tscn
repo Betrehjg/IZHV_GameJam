@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2pre57et01d5"]
+[gd_scene load_steps=18 format=3 uid="uid://b2pre57et01d5"]
 
 [ext_resource type="Script" path="res://Scripts/Bear.gd" id="1_bqbxu"]
 [ext_resource type="PackedScene" uid="uid://dxrqab3pjoa5b" path="res://particles/death_particles.tscn" id="2_413og"]
@@ -44,15 +44,47 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_at3w8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_at3w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1sp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dsb3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_68wgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m6vkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_68wgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dsb3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1sp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_at3w8")
 }],
-"loop": true,
+"loop": false,
+"name": &"Harvest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_at3w8")
+}],
+"loop": false,
 "name": &"Idle",
 "speed": 5.0
 }]
@@ -64,12 +96,18 @@ size = Vector2(40, 16)
 bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5ne2"]
-bg_color = Color(0.92549, 0.341176, 0.305882, 1)
+bg_color = Color(1, 0.117647, 0.14902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy2kd"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3i6g"]
+bg_color = Color(0.843137, 0.623529, 0.14902, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hy774"]
 radius = 30.0
 
-[node name="Bear" type="CharacterBody2D" node_paths=PackedStringArray("hit_area", "bonk_timer", "select_highlight", "anim_sprite", "hp_bar", "range_area", "attack_timer")]
+[node name="Bear" type="CharacterBody2D" node_paths=PackedStringArray("hit_area", "bonk_timer", "select_highlight", "anim_sprite", "hp_bar", "range_area", "attack_timer", "honey_bar")]
 collision_mask = 3
 script = ExtResource("1_bqbxu")
 hit_area = NodePath("Rotate/hitArea")
@@ -80,8 +118,8 @@ death_particles = ExtResource("2_413og")
 hit_particles = ExtResource("3_qidjy")
 hp_bar = NodePath("HpBar")
 range_area = NodePath("AttackRange/RangeShape")
-max_range = 250.0
 attack_timer = NodePath("AttackCD")
+honey_bar = NodePath("HoneyBar")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -93,13 +131,14 @@ shape = SubResource("CapsuleShape2D_s2jch")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Rotate"]
 sprite_frames = SubResource("SpriteFrames_nbj86")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="Selected" type="Sprite2D" parent="Rotate"]
 visible = false
 texture = ExtResource("9_movs1")
 
 [node name="hitArea" type="Area2D" parent="Rotate"]
+visible = false
 position = Vector2(-9, 0)
 collision_layer = 8
 collision_mask = 2
@@ -110,16 +149,27 @@ shape = SubResource("RectangleShape2D_ijarg")
 
 [node name="HpBar" type="ProgressBar" parent="."]
 visible = false
-offset_left = -12.0
-offset_top = 11.0
-offset_right = 26.0
-offset_bottom = 13.0
+offset_left = -24.0
+offset_top = 9.0
+offset_right = 14.0
+offset_bottom = 10.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vy240")
 theme_override_styles/fill = SubResource("StyleBoxFlat_u5ne2")
 value = 50.0
 show_percentage = false
 
+[node name="HoneyBar" type="ProgressBar" parent="."]
+offset_left = -24.0
+offset_top = 11.0
+offset_right = 14.0
+offset_bottom = 12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vy2kd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t3i6g")
+value = 50.0
+show_percentage = false
+
 [node name="AttackRange" type="Area2D" parent="."]
+visible = false
 position = Vector2(3, 0)
 collision_layer = 4
 collision_mask = 2

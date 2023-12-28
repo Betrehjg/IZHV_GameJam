@@ -17,7 +17,7 @@ bg_color = Color(0.290196, 0.290196, 0.290196, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcjrg"]
 bg_color = Color(0.858824, 0.431373, 0.388235, 1)
 
-[node name="Turret" type="StaticBody2D" node_paths=PackedStringArray("range_collision", "turret_top", "attack_timer", "hpBar")]
+[node name="Turret" type="StaticBody2D" node_paths=PackedStringArray("range_collision", "turret_top", "attack_timer", "hpBar") groups=["Turret"]]
 collision_layer = 2
 script = ExtResource("1_l32l7")
 range_collision = NodePath("TurretRange/RangeCollision")

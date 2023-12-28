@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fieiff2dwqa4" path="res://particles/rocketSmoke.tscn" id="3_iddju"]
 [ext_resource type="PackedScene" uid="uid://cailmcwldoxcu" path="res://Objects/rocket.tscn" id="3_saiha"]
 
-[node name="Turret" node_paths=PackedStringArray("rocket_delay_timer", "smoke_out") instance=ExtResource("1_qyt57")]
+[node name="Turret" node_paths=PackedStringArray("rocket_delay_timer", "smoke_out") groups=["Turret"] instance=ExtResource("1_qyt57")]
 script = ExtResource("2_3jmwq")
 rocket_count = 5
 rocket_delay = 0.3

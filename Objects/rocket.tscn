@@ -29,6 +29,8 @@ position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_wk62o")
 
 [node name="Explosion" type="Area2D" parent="." index="3"]
+collision_layer = 8
+collision_mask = 33
 monitoring = false
 
 [node name="ExplosionShape" type="CollisionShape2D" parent="Explosion" index="0"]

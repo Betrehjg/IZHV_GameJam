@@ -1,13 +1,111 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs0gr72xtx73h"]
+[gd_scene load_steps=9 format=3 uid="uid://cs0gr72xtx73h"]
 
+[ext_resource type="Script" path="res://Scripts/tree.gd" id="1_866io"]
 [ext_resource type="Texture2D" uid="uid://0j131sccl8tj" path="res://Sprites/Objects/TreeFruit.png" id="1_niil5"]
 [ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/TreeEmpty.png" id="2_batdm"]
 
-[node name="Tree" type="Node2D"]
+[sub_resource type="Animation" id="Animation_r7yno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeFruitsSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeEmptySprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tl07h"]
+resource_name = "shake"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeFruitsSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.191986, 0.0, -0.191986, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeEmptySprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.191986, 0.0, -0.191986, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jijgg"]
+_data = {
+"RESET": SubResource("Animation_r7yno"),
+"shake": SubResource("Animation_tl07h")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arb7e"]
+size = Vector2(33, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht6oq"]
+size = Vector2(45.5, 62)
+
+[node name="Tree" type="StaticBody2D"]
+collision_layer = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jijgg")
+}
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 26.5)
+shape = SubResource("RectangleShape2D_arb7e")
 
 [node name="TreeFruitsSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, 30)
 texture = ExtResource("1_niil5")
+offset = Vector2(1, -30)
 
 [node name="TreeEmptySprite" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(-1, 30)
 texture = ExtResource("2_batdm")
+offset = Vector2(1, -30)
+
+[node name="ClickArea" type="Area2D" parent="." node_paths=PackedStringArray("animation_player", "add_honey_timer") groups=["Tree"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_866io")
+animation_player = NodePath("../AnimationPlayer")
+add_honey_timer = NodePath("../AddHoney")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-1.25, 1)
+shape = SubResource("RectangleShape2D_ht6oq")
+
+[node name="AddHoney" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AddHoney" to="ClickArea" method="_on_add_honey_timeout"]

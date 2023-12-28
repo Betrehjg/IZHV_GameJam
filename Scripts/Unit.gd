@@ -1,17 +1,14 @@
 extends CharacterBody2D
 
-enum State {ATTACK_MOVE, ATTACK, MOVE, IDLE}
-
-var goals: Array[Vector2]
+var goals: Array[Dictionary]
 var move_vector: Vector2
 var selected: bool = false
 var attack: bool = false
 var current_hp: float
-var current_target = null
 var valid_targets: Dictionary
-var state: State = State.IDLE
 var can_attack = true
 var fog_tilemap: TileMap
+var current_honey: int = 0
 
 @export var select_highlight: Sprite2D
 @export var anim_sprite: AnimatedSprite2D
@@ -22,19 +19,26 @@ var fog_tilemap: TileMap
 @export var hit_particles: PackedScene
 @export var hp_bar: ProgressBar
 @export var range_area: CollisionShape2D
-@export var max_range: float = 500
+@export var max_target_spot_range: float = 500
 @export var max_attack_range: float = 60
 @export var attack_timer: Timer
 @export var attack_cd: float = 2
 @export var dmg = 10
 @export var vision_range: int = 2
+@export var max_range_to_harvest: float = 60
+@export var max_honey: int = 100
+@export var replicate_cost: int = 50
+@export var my_type = "Bear"
+@export var honey_bar: ProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	range_area.shape.radius = max_range
+	range_area.shape.radius = max_target_spot_range
 	current_hp = max_hp
 	hp_bar.max_value = max_hp
 	hp_bar.value = current_hp
+	honey_bar.max_value = max_honey
+	honey_bar.value = current_honey
 	fog_tilemap = get_tree().root.get_node("World/Fog")
 
 func take_dmg(dmg: float):
@@ -62,69 +66,104 @@ func attack_command() -> void:
 	$AttackRange.monitoring = true
 	attack = true
 
-func get_unit_path() -> Array[Vector2]:
-	var unit_path: Array[Vector2]
-	if state == State.MOVE:
-		unit_path = goals.duplicate(true)
-		unit_path.push_front(global_position)
-	elif state == State.ATTACK_MOVE:
-		unit_path.push_front(global_position)
-		unit_path.push_back(current_target.global_position)
+func get_unit_path() -> Array[Dictionary]:
+	var unit_path: Array[Dictionary]
+	var prev_end = global_position
 	
-	return unit_path
-
-func _physics_process(delta):
-	velocity = Vector2.ZERO
-	var current_goal = null
-	var current_pos = global_position
-	var tmp_min_dist = null
-
-	if attack:
-		get_target()
-		if current_target != null:
-			current_goal = current_target.global_position
-			tmp_min_dist = max_attack_range
-			state = State.ATTACK_MOVE
-
-	if current_goal == null and not goals.is_empty():
-		current_goal = goals[0]
-		tmp_min_dist = min_dist_to_goal
-		state = State.MOVE
-	
-	if current_goal != null:
-		if current_pos.distance_to(current_goal) > tmp_min_dist:
-			move_vector = current_pos.direction_to(current_goal)
-			velocity = move_vector.normalized() * move_speed
-
-			$Rotate.look_at(current_goal)
-			$Collision.look_at(current_goal)
-			$Collision.rotation = wrapf($Collision.rotation + deg_to_rad(90), deg_to_rad(0), deg_to_rad(360))
-			move_and_slide()
+	for goal in goals:
+		var new_goal:Dictionary
+		if goal["type"] == "Move":
+			new_goal["end"] = goal["target"]
 		else:
-			if state == State.MOVE:
-				goals.pop_front()
-			elif state == State.ATTACK_MOVE:
-				state = State.ATTACK
-	else:
-		state = State.IDLE
+			if goal["target"] == null:
+				continue
+			new_goal["end"] = goal["target"].global_position
 		
-func _process(delta):
-	if state == State.ATTACK:
-		if can_attack:
-			do_attack()
-			can_attack = false
-			attack_timer.start(attack_cd)
+		new_goal["start"] = prev_end
+		new_goal["type"] = goal["type"]
+		prev_end = new_goal["end"]
+		unit_path.push_back(new_goal)
 
+	return unit_path
+	
+func _process(delta):
 	reveal_fog()
 
+func _physics_process(delta):
+	var current_goal
+	
+	if attack:
+		get_target()
+	
+	if goals.is_empty():
+		return
+	else:
+		current_goal = goals[0]
+		
+	velocity = Vector2.ZERO
+	
+	match current_goal["type"]:
+		"Attack":
+			if not current_goal["reached"]:
+				if current_goal["target"] != null:
+					if global_position.distance_to(current_goal["target"].global_position) > max_attack_range:
+						move_to_target(current_goal["target"].global_position)
+					else:
+						goals[0]["reached"] = true
+						do_attack()
+				else:
+					goals.pop_front()
+			else:
+				if current_goal["target"] != null:
+					do_attack()
+				else:
+					goals.pop_front()
+		"Harvest":
+			if not current_goal["reached"]:
+				if current_goal["target"] != null:
+					if global_position.distance_to(current_goal["target"].global_position) > max_range_to_harvest:
+						move_to_target(current_goal["target"].global_position)		
+					else:
+						goals[0]["reached"] = true
+						harvest()
+				else:
+					goals.pop_front()
+			else:
+				if current_goal["target"] != null:
+					harvest()
+				else:
+					goals.pop_front()
+		"Move":
+			if global_position.distance_to(current_goal["target"]) > min_dist_to_goal:
+				move_to_target(current_goal["target"])
+			else:
+				goals.pop_front()
+	
+func move_to_target(target:Vector2):
+	move_vector = global_position.direction_to(target)
+	velocity = move_vector.normalized() * move_speed
+
+	$Rotate.look_at(target)
+	$Collision.look_at(target)
+	$Collision.rotation = wrapf($Collision.rotation + deg_to_rad(90), deg_to_rad(0), deg_to_rad(360))
+	move_and_slide()
+
+#starts attacking
 func do_attack():
-	anim_sprite.play("Attack")
-			
+	if can_attack:
+		can_attack = false
+		anim_sprite.play("Attack")
+		attack_timer.start(attack_cd)
+
+#gets closes target to unit	
 func get_target():
-	current_target = null
+	var new_goal: Dictionary
 	for tmp_target in valid_targets:
 		if valid_targets[tmp_target] != null:
-			current_target = valid_targets[tmp_target]
+			new_goal["type"] = "Attack"
+			new_goal["target"] = valid_targets[tmp_target]
+			new_goal["reached"] = false
+			attack = false
 			return
 
 func select():
@@ -135,11 +174,17 @@ func deselect():
 	selected = false
 	select_highlight.visible = false
 	
-func set_goal(goal_position: Vector2, clear: bool = false):
+func set_goal(goal_position, clear: bool = false, type= "Move"):
 	if clear:
 		goals.clear()
+		attack = false
 	
-	goals.push_back(goal_position)	
+	var new_goal:Dictionary
+	new_goal["type"] = type
+	new_goal["target"] = goal_position
+	new_goal["reached"] = false
+	
+	goals.push_back(new_goal)
 		
 func _on_attack_range_body_entered(body: Node2D):
 	valid_targets[body.get_instance_id()] = body
@@ -156,7 +201,40 @@ func reveal_fog():
 	var end_pos: Vector2i = tilemap_pos + Vector2i(vision_range, vision_range)
 	
 	fog_tilemap.reveal_tiles(start_pos, end_pos)
+	
+func set_target(target, clear = false):
+	if clear:
+		goals.clear()
+		attack = false
+	
+	var new_goal: Dictionary
+	new_goal["target"] = target
+	new_goal["type"] = "Attack"
+	new_goal["reached"] = false
 
-func _on_bear_sprite_animation_finished():
-	anim_sprite.play("Idle")
-	anim_sprite.stop()
+	goals.push_back(new_goal)
+	
+func harvest():
+	if current_honey < max_honey:
+		if can_attack:
+			can_attack = false
+			current_honey = min(current_honey + goals[0]["target"].eat_honey(dmg), max_honey)
+			honey_bar.value = current_honey
+			
+			if current_honey == max_honey:
+				goals.pop_front()
+				print("Bear is fucking FAT AS FUCK")
+				
+			anim_sprite.play("Harvest")
+			attack_timer.start(attack_cd)
+	else:
+		goals.pop_front()
+		
+func replicate():
+	if current_honey >= replicate_cost:
+		current_honey -= replicate_cost
+		honey_bar.value = current_honey
+		
+		var my_instance = Replicator.get_my_scene(my_type).instantiate()
+		my_instance.global_position = global_position + Vector2(40, 40)
+		get_tree().root.get_node("World/Objects/Units").add_child(my_instance)
