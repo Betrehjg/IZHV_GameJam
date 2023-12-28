@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxorsrk21sia2"]
+
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/Turrets/turret.tscn" id="1_qyt57"]
+[ext_resource type="Script" path="res://Scripts/rocket_turret.gd" id="2_3jmwq"]
+[ext_resource type="Texture2D" uid="uid://dehui0qvjc637" path="res://Sprites/Turret/Rocket/TurretRocketBase.png" id="2_5wudi"]
+[ext_resource type="Texture2D" uid="uid://c42l6sn318amf" path="res://Sprites/Turret/Rocket/TurretRocketTop.png" id="3_e0lwp"]
+
+[node name="Turret" instance=ExtResource("1_qyt57")]
+script = ExtResource("2_3jmwq")
+rocket_count = 5
+bullet_dmg = 10.0
+bullet_scene = null
+
+[node name="TurretBase" parent="." index="0"]
+texture = ExtResource("2_5wudi")
+
+[node name="TurretTop" parent="." index="1"]
+position = Vector2(-6, -2)
+texture = ExtResource("3_e0lwp")
+offset = Vector2(-1.39869, -1.90106)
+
+[node name="Out" parent="TurretTop" index="0"]
+position = Vector2(7.13685, -0.0726099)
+
+[node name="Collision" parent="." index="2"]
+position = Vector2(-2.5, 0)
+
+[node name="RocketDelay" type="Timer" parent="." index="6"]
+one_shot = true
+
+[connection signal="timeout" from="RocketDelay" to="." method="_on_rocket_delay_timeout"]

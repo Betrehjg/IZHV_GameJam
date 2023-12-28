@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0sfxsjc6a14u"]
+
+[ext_resource type="Script" path="res://Scripts/particle_death.gd" id="1_qspp0"]
+
+[node name="HitParticles" type="CPUParticles2D"]
+emitting = false
+amount = 60
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.64
+initial_velocity_max = 50.64
+scale_amount_max = 3.0
+color = Color(0.568627, 0.0588235, 0, 1)
+script = ExtResource("1_qspp0")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

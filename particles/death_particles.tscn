@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxrqab3pjoa5b"]
+
+[ext_resource type="Script" path="res://Scripts/particle_death.gd" id="1_gf7o7"]
+
+[sub_resource type="Gradient" id="Gradient_oqx70"]
+colors = PackedColorArray(0.587498, 0.271271, 0.0129269, 1, 0.601662, 0, 0.129957, 1)
+
+[node name="DeathParticles" type="CPUParticles2D"]
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.47
+initial_velocity_max = 30.88
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_oqx70")
+script = ExtResource("1_gf7o7")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

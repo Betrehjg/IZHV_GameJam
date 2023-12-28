@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h25bm6am1qcp"
-path="res://.godot/imported/BearCircle.png-f075a9cc7163a37e24784e4a3d3069a4.ctex"
+uid="uid://ltgsm1mimgvk"
+path="res://.godot/imported/Ground.png-68788b7d3d9028eae5c7fcef7b10ada4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/BearCircle.png"
-dest_files=["res://.godot/imported/BearCircle.png-f075a9cc7163a37e24784e4a3d3069a4.ctex"]
+source_file="res://Sprites/Tiles/Ground.png"
+dest_files=["res://.godot/imported/Ground.png-68788b7d3d9028eae5c7fcef7b10ada4.ctex"]
 
 [params]
 

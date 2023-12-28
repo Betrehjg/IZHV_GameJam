@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cs0gr72xtx73h"]
 
-[ext_resource type="Texture2D" uid="uid://0j131sccl8tj" path="res://Sprites/TreeFruit.png" id="1_niil5"]
-[ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/TreeEmpty.png" id="2_batdm"]
+[ext_resource type="Texture2D" uid="uid://0j131sccl8tj" path="res://Sprites/Objects/TreeFruit.png" id="1_niil5"]
+[ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/TreeEmpty.png" id="2_batdm"]
 
 [node name="Tree" type="Node2D"]
 
