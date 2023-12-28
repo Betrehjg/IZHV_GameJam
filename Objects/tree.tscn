@@ -1,8 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs0gr72xtx73h"]
+[gd_scene load_steps=19 format=3 uid="uid://cs0gr72xtx73h"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_866io"]
-[ext_resource type="Texture2D" uid="uid://0j131sccl8tj" path="res://Sprites/Objects/TreeFruit.png" id="1_niil5"]
+[ext_resource type="Texture2D" uid="uid://bmhmiwqqpumgf" path="res://Sprites/Objects/Fruits1.png" id="2_07un7"]
 [ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/TreeEmpty.png" id="2_batdm"]
+[ext_resource type="Texture2D" uid="uid://d36m6eeqb5ear" path="res://Sprites/Objects/Fruits2.png" id="3_60hol"]
+[ext_resource type="Texture2D" uid="uid://jov62hpk875m" path="res://Sprites/Objects/Fruits3.png" id="4_1ouw6"]
+[ext_resource type="Texture2D" uid="uid://b136phkunchs3" path="res://Sprites/Objects/Fruits4.png" id="5_7fm2m"]
+[ext_resource type="Texture2D" uid="uid://bt7xrhkpbe016" path="res://Sprites/Objects/Fruits5.png" id="6_g45l3"]
+[ext_resource type="Texture2D" uid="uid://bovxmhnk04ro" path="res://Sprites/Objects/Fruits6.png" id="7_1mhrw"]
+[ext_resource type="Texture2D" uid="uid://dbjyhvmjd4san" path="res://Sprites/Objects/Fruits7.png" id="8_qkict"]
+[ext_resource type="Texture2D" uid="uid://b27t5d2mtkid3" path="res://Sprites/Objects/Fruits8.png" id="9_6356c"]
+[ext_resource type="Texture2D" uid="uid://bj0n3wuoo5xxy" path="res://Sprites/Objects/Fruits9.png" id="10_622dg"]
+[ext_resource type="Texture2D" uid="uid://d2bsomgielsbb" path="res://Sprites/Objects/Fruits10.png" id="11_rgic4"]
 
 [sub_resource type="Animation" id="Animation_r7yno"]
 length = 0.001
@@ -68,6 +77,47 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arb7e"]
 size = Vector2(33, 11)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_edkpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_07un7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_60hol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1ouw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7fm2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g45l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1mhrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qkict")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6356c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_622dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rgic4")
+}],
+"loop": false,
+"name": &"Fruits",
+"speed": 0.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht6oq"]
 size = Vector2(45.5, 62)
 
@@ -83,23 +133,24 @@ libraries = {
 position = Vector2(-2.5, 26.5)
 shape = SubResource("RectangleShape2D_arb7e")
 
-[node name="TreeFruitsSprite" type="Sprite2D" parent="."]
-position = Vector2(-1, 30)
-texture = ExtResource("1_niil5")
-offset = Vector2(1, -30)
-
 [node name="TreeEmptySprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-1, 30)
 texture = ExtResource("2_batdm")
 offset = Vector2(1, -30)
 
-[node name="ClickArea" type="Area2D" parent="." node_paths=PackedStringArray("animation_player", "add_honey_timer") groups=["Tree"]]
+[node name="TreeFruitsSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 30)
+sprite_frames = SubResource("SpriteFrames_edkpc")
+animation = &"Fruits"
+offset = Vector2(1, -30)
+
+[node name="ClickArea" type="Area2D" parent="." node_paths=PackedStringArray("animation_player", "add_honey_timer", "fruit_sprite") groups=["Tree"]]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_866io")
 animation_player = NodePath("../AnimationPlayer")
 add_honey_timer = NodePath("../AddHoney")
+fruit_sprite = NodePath("../TreeFruitsSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
 position = Vector2(-1.25, 1)

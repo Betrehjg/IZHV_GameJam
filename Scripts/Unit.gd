@@ -223,7 +223,6 @@ func harvest():
 			
 			if current_honey == max_honey:
 				goals.pop_front()
-				print("Bear is fucking FAT AS FUCK")
 				
 			anim_sprite.play("Harvest")
 			attack_timer.start(attack_cd)

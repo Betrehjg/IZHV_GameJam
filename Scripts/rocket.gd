@@ -20,7 +20,7 @@ func explode():
 	$BulletSprite.visible = false
 	explosion_duration_timer.start(explosion_duration)
 	explosion.monitoring = true
-	collision.monitoring
+	collision.monitoring = false
 	moving = false
 	
 	var particles = explosion_particles.instantiate()

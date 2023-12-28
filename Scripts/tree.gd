@@ -7,10 +7,16 @@ var current_honey: int
 @export var add_honey_timer: Timer
 @export var amount_added: int = 50
 @export var time_betweed_new_honey: float = 4
+@export var fruit_sprite: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_honey = max_honey
+	fruit_sprite.frame = 10
+	
+func change_fruit_sprite():
+	var sprite_idx = int((float(current_honey) / max_honey) * 100) / 10
+	fruit_sprite.frame = sprite_idx
 
 func eat_honey(amout_request: float) -> float:
 	var returned_honey = 0
@@ -25,6 +31,7 @@ func eat_honey(amout_request: float) -> float:
 		animation_player.play("shake")
 		
 	add_honey_timer.start(time_betweed_new_honey)
+	change_fruit_sprite()
 	return returned_honey
 
 func _on_add_honey_timeout():
@@ -32,3 +39,5 @@ func _on_add_honey_timeout():
 	
 	if current_honey < max_honey:
 		add_honey_timer.start(time_betweed_new_honey)
+	
+	change_fruit_sprite()
