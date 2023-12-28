@@ -24,7 +24,7 @@ func _ready():
 	hpBar.value = current_hp
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	get_current_target()
 	if current_target != null:
 		var new_rotation = get_angle_to(current_target.global_position)
@@ -33,18 +33,21 @@ func _process(delta):
 		if can_shoot:
 			can_shoot = false
 			shoot()
-			attack_timer.start(shoot_cd)
 			
-func shoot():
-	var bullet = bullet_scene.instantiate()
-	bullet.move_speed = bullet_speed
-	bullet.move_vector = $TurretTop/Out.global_position.direction_to(current_target.global_position)
-	bullet.dmg = bullet_dmg
-	bullet.max_distance = fire_range
-	bullet.start_pos = $TurretTop/Out.global_position
-	bullet.global_position = $TurretTop/Out.global_position
-	get_tree().root.add_child(bullet)
+func spawn_projectile(projectile:Node, target: Vector2):
+	projectile.move_speed = bullet_speed
+	projectile.move_vector = $TurretTop/Out.global_position.direction_to(target)
+	projectile.dmg = bullet_dmg
+	projectile.max_distance = fire_range
+	projectile.start_pos = $TurretTop/Out.global_position
+	projectile.global_position = $TurretTop/Out.global_position
+	get_tree().root.get_node("World/Bullets").add_child(projectile)
 	
+
+func shoot():
+	spawn_projectile(bullet_scene.instantiate(), current_target.global_position)
+	attack_timer.start(shoot_cd)
+
 func get_current_target():
 	var min_dist = fire_range
 	var new_target = null

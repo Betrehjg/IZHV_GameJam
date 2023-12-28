@@ -80,6 +80,7 @@ death_particles = ExtResource("2_413og")
 hit_particles = ExtResource("3_qidjy")
 hp_bar = NodePath("HpBar")
 range_area = NodePath("AttackRange/RangeShape")
+max_range = 250.0
 attack_timer = NodePath("AttackCD")
 
 [node name="Collision" type="CollisionShape2D" parent="."]

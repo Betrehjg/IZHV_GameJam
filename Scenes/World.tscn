@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b2pre57et01d5" path="res://Objects/bear.tscn" id="2_gdvip"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.gd" id="3_nau8d"]
 [ext_resource type="PackedScene" uid="uid://cs0gr72xtx73h" path="res://Objects/tree.tscn" id="3_u33se"]
-[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/Turrets/turret.tscn" id="6_artgy"]
 [ext_resource type="TileSet" uid="uid://uthrdqsigkv0" path="res://Tilesets/FogTilemap.tres" id="6_w4qxv"]
 [ext_resource type="Script" path="res://Scripts/FogControll.gd" id="7_g60g4"]
+[ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/Turrets/rocket_turret.tscn" id="8_ovb0n"]
 
 [node name="World" type="Node2D"]
 
@@ -41,15 +41,15 @@ position = Vector2(240, -692)
 [node name="Tree5" parent="Objects" instance=ExtResource("3_u33se")]
 position = Vector2(37, -806)
 
+[node name="Bullets" type="Node2D" parent="."]
+
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
 position = Vector2(-115, -410)
 script = ExtResource("3_nau8d")
 tilemap = NodePath("../WorldMap")
 
-[node name="Turret" parent="." instance=ExtResource("6_artgy")]
-position = Vector2(-476, -19)
-
 [node name="Fog" type="TileMap" parent="." node_paths=PackedStringArray("world_map")]
+visible = false
 tile_set = ExtResource("6_w4qxv")
 format = 2
 script = ExtResource("7_g60g4")
@@ -59,3 +59,17 @@ metadata/_edit_lock_ = true
 [node name="Controlls" type="Node2D" parent="."]
 script = ExtResource("1_80v7l")
 metadata/_edit_lock_ = true
+
+[node name="Turret" parent="." instance=ExtResource("8_ovb0n")]
+position = Vector2(-573, 34)
+explosion_radius = 0.0
+smoke_particles = null
+
+[node name="Bear" parent="." instance=ExtResource("2_gdvip")]
+position = Vector2(-313, -447)
+
+[node name="Bear2" parent="." instance=ExtResource("2_gdvip")]
+position = Vector2(-231, -559)
+
+[node name="Bear3" parent="." instance=ExtResource("2_gdvip")]
+position = Vector2(-89, -577)

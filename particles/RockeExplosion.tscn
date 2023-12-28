@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbi5v1iliv6le"]
+
+[ext_resource type="Script" path="res://Scripts/particle_death.gd" id="1_xfmoj"]
+
+[sub_resource type="Gradient" id="Gradient_e4osn"]
+colors = PackedColorArray(0.908612, 0.743492, 0.214035, 1, 1, 0.0470588, 0.0823529, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 300
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_e4osn")
+script = ExtResource("1_xfmoj")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
