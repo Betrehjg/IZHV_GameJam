@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cs0gr72xtx73h"]
+[gd_scene load_steps=22 format=3 uid="uid://cs0gr72xtx73h"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_866io"]
+[ext_resource type="Script" path="res://Scripts/tree_body.gd" id="1_ip034"]
 [ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/Tree/TreeEmpty.png" id="1_jdc8k"]
 [ext_resource type="Texture2D" uid="uid://bmhmiwqqpumgf" path="res://Sprites/Objects/Tree/Fruits1.png" id="2_okf56"]
 [ext_resource type="Texture2D" uid="uid://d36m6eeqb5ear" path="res://Sprites/Objects/Tree/Fruits2.png" id="3_tvt4c"]
@@ -121,8 +122,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht6oq"]
 size = Vector2(45.5, 62)
 
-[node name="Tree" type="StaticBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v2ex"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62dfs"]
+bg_color = Color(1, 0.117647, 0.14902, 1)
+
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("hp_bar")]
 collision_layer = 32
+script = ExtResource("1_ip034")
+hp_bar = NodePath("HPBar")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -158,5 +167,15 @@ shape = SubResource("RectangleShape2D_ht6oq")
 
 [node name="AddHoney" type="Timer" parent="."]
 one_shot = true
+
+[node name="HPBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = 33.0
+offset_right = 21.0
+offset_bottom = 35.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1v2ex")
+theme_override_styles/fill = SubResource("StyleBoxFlat_62dfs")
+show_percentage = false
 
 [connection signal="timeout" from="AddHoney" to="ClickArea" method="_on_add_honey_timeout"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxrvov27bo5ok"]
+
+[ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/EnemyStructures/rocket_turret.tscn" id="1_2jkio"]
+[ext_resource type="Script" path="res://Scripts/expansion_controll.gd" id="1_cmncx"]
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="2_u58yk"]
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/EnemyStructures/wall.tscn" id="3_6xc2q"]
+[ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="4_tmiec"]
+
+[node name="ExpansionPreset1" type="Node2D"]
+script = ExtResource("1_cmncx")
+
+[node name="Turret" parent="." instance=ExtResource("1_2jkio")]
+position = Vector2(-96, -84)
+
+[node name="Turret2" parent="." instance=ExtResource("2_u58yk")]
+position = Vector2(-46, -9)
+
+[node name="Turret3" parent="." instance=ExtResource("2_u58yk")]
+position = Vector2(37, -7)
+
+[node name="Turret4" parent="." instance=ExtResource("2_u58yk")]
+position = Vector2(-45, 71)
+
+[node name="Turret5" parent="." instance=ExtResource("2_u58yk")]
+position = Vector2(37, 70)
+
+[node name="Turret6" parent="." instance=ExtResource("1_2jkio")]
+position = Vector2(107, 120)
+
+[node name="Turret7" parent="." instance=ExtResource("1_2jkio")]
+position = Vector2(-108, 129)
+
+[node name="Turret8" parent="." instance=ExtResource("1_2jkio")]
+position = Vector2(107, -62)
+
+[node name="Wall" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(-91, 190)
+
+[node name="Wall2" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(2, 190)
+
+[node name="Wall3" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(89, 188)
+
+[node name="Wall4" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(-108, -145)
+
+[node name="Wall5" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(-27, -144)
+
+[node name="Wall6" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(51, -144)
+
+[node name="Wall7" parent="." instance=ExtResource("3_6xc2q")]
+position = Vector2(128, -141)
+
+[node name="Wall8" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(171, -77)
+
+[node name="Wall9" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(171, 6)
+
+[node name="Wall10" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(172, 88)
+
+[node name="Wall11" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(171, 174)
+
+[node name="Wall12" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(-169, -101)
+
+[node name="Wall13" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(-166, -22)
+
+[node name="Wall14" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(-166, 60)
+
+[node name="Wall15" parent="." instance=ExtResource("4_tmiec")]
+position = Vector2(-167, 158)
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

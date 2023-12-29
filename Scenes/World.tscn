@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxmywrvjkobam"]
+[gd_scene load_steps=15 format=3 uid="uid://dxmywrvjkobam"]
 
 [ext_resource type="Script" path="res://Scripts/Controls.gd" id="1_80v7l"]
 [ext_resource type="TileSet" uid="uid://437nm4boj6l7" path="res://Tilesets/worldTiles.tres" id="1_bnqig"]
@@ -13,9 +13,6 @@
 [ext_resource type="Script" path="res://Scripts/UIScripts/pause_menu.gd" id="9_y07bn"]
 [ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="12_xaapm"]
 [ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="13_l0w7r"]
-[ext_resource type="PackedScene" uid="uid://xoa5jik2xgk8" path="res://Objects/Units/Beargon.tscn" id="14_6tqar"]
-[ext_resource type="PackedScene" uid="uid://f0m2t805ebyd" path="res://Objects/Units/beargant.tscn" id="15_2vlc2"]
-[ext_resource type="PackedScene" uid="uid://7wjypi66thv5" path="res://Objects/Units/bearicopter.tscn" id="16_8rh2i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uog3u"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 0.517647)
@@ -35,39 +32,129 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Bear" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(-153, -451)
+position = Vector2(575, -609)
 
 [node name="Bear2" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(-313, -447)
+position = Vector2(415, -605)
 
 [node name="Bear3" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(-231, -559)
+position = Vector2(497, -717)
 
 [node name="Bear4" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(-89, -577)
+position = Vector2(639, -735)
 
 [node name="Trees" type="Node2D" parent="Objects"]
 y_sort_enabled = true
 
 [node name="Tree" parent="Objects/Trees" instance=ExtResource("3_u33se")]
 y_sort_enabled = true
-position = Vector2(61, -595)
+position = Vector2(695, -563)
 
 [node name="Tree2" parent="Objects/Trees" instance=ExtResource("3_u33se")]
 y_sort_enabled = true
-position = Vector2(400, -545)
+position = Vector2(968, -573)
 
 [node name="Tree3" parent="Objects/Trees" instance=ExtResource("3_u33se")]
 y_sort_enabled = true
-position = Vector2(408, -798)
+position = Vector2(958, -796)
 
 [node name="Tree4" parent="Objects/Trees" instance=ExtResource("3_u33se")]
 y_sort_enabled = true
-position = Vector2(240, -692)
+position = Vector2(846, -678)
+
+[node name="Tree6" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-997, -756)
+
+[node name="Tree7" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-860, -742)
+
+[node name="Tree8" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-944, -626)
+
+[node name="Tree9" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-376, -660)
+
+[node name="Tree10" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-272, -592)
+
+[node name="Tree11" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-416, -522)
+
+[node name="Tree12" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-978, -232)
+
+[node name="Tree13" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-878, -184)
+
+[node name="Tree14" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-902, -334)
+
+[node name="Tree15" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-1382, -482)
+
+[node name="Tree16" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-1400, -96)
+
+[node name="Tree17" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-290, -172)
+
+[node name="Tree18" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-186, -162)
+
+[node name="Tree19" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-1412, -850)
+
+[node name="Tree20" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(632, 231)
+
+[node name="Tree21" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(714, 303)
+
+[node name="Tree22" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(602, 339)
+
+[node name="Tree23" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(166, 193)
+
+[node name="Tree24" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(192, 447)
+
+[node name="Tree25" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-326, 519)
+
+[node name="Tree26" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-406, 423)
+
+[node name="Tree27" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(-306, 121)
+
+[node name="Tree28" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(986, 667)
+
+[node name="Tree29" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(1070, 733)
+
+[node name="Tree30" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(1080, 547)
+
+[node name="Tree31" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(694, -123)
+
+[node name="Tree32" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(790, -211)
+
+[node name="Tree33" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(608, -215)
+
+[node name="Tree34" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(203, -492)
+
+[node name="Tree35" parent="Objects/Trees" instance=ExtResource("3_u33se")]
+position = Vector2(165, -780)
 
 [node name="Tree5" parent="Objects/Trees" instance=ExtResource("3_u33se")]
 y_sort_enabled = true
-position = Vector2(37, -806)
+position = Vector2(731, -784)
 
 [node name="enemies" type="Node2D" parent="Objects"]
 y_sort_enabled = true
@@ -88,6 +175,7 @@ position = Vector2(-948, 324)
 
 [node name="ControllCenter" parent="Objects/enemies" instance=ExtResource("4_rrtln")]
 position = Vector2(-909, 382)
+expansion_cd = 0.0
 
 [node name="Turret" parent="Objects/enemies" instance=ExtResource("12_xaapm")]
 position = Vector2(-767, 377)
@@ -173,10 +261,65 @@ position = Vector2(-1138, 214)
 [node name="Wall26" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-680, 531)
 
+[node name="Expansions" type="Node2D" parent="Objects"]
+
+[node name="Expansion1" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-622, -27)
+
+[node name="Expansion2" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-74, 22)
+
+[node name="Expansion3" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-92, 323)
+
+[node name="Expansion0" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-1116, -33)
+
+[node name="Expansion5" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-1261, -357)
+
+[node name="Expansion4" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-83, 648)
+
+[node name="Expansion7" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-46, -323)
+
+[node name="Expansion6" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-633, -332)
+
+[node name="Expansion8" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-1278, -689)
+
+[node name="Expansion9" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-662, -667)
+
+[node name="Expansion10" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(-52, -689)
+
+[node name="Expansion11" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(384, 649)
+
+[node name="Expansion12" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(414, 325)
+
+[node name="Expansion16" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(770, -450)
+
+[node name="Expansion15" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(882, 79)
+
+[node name="Expansion14" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(870, 464)
+
+[node name="Expansion13" type="Node2D" parent="Objects/Expansions"]
+position = Vector2(432, 3)
+
+[node name="Drones" type="Node2D" parent="Objects"]
+
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
-position = Vector2(-115, -410)
+position = Vector2(613, -568)
 script = ExtResource("3_nau8d")
 tilemap = NodePath("../WorldMap")
 
@@ -232,17 +375,6 @@ text = "Exit"
 
 [node name="HowToPlay" type="CanvasLayer" parent="."]
 visible = false
-
-[node name="Unit" parent="." instance=ExtResource("14_6tqar")]
-position = Vector2(-685, -381)
-max_hp = 111111111
-
-[node name="Bear" parent="." instance=ExtResource("15_2vlc2")]
-position = Vector2(-616, -576)
-max_hp = 100
-
-[node name="Unit2" parent="." instance=ExtResource("16_8rh2i")]
-position = Vector2(-497, -380)
 
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Continue" to="UI" method="_on_continue_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Restart" to="UI" method="_on_restart_pressed"]

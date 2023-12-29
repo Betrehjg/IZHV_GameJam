@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cefcgno4nn45r"]
+[gd_scene load_steps=9 format=3 uid="uid://cefcgno4nn45r"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyScripts/controll_center.gd" id="1_6jqpc"]
+[ext_resource type="PackedScene" uid="uid://8xyyw2jhii55" path="res://Objects/EnemyStructures/ExpansionDrone.tscn" id="2_3gvoy"]
 [ext_resource type="Texture2D" uid="uid://qbabrkkjg8fa" path="res://Sprites/EnemyObjects/ControllCentre.png" id="2_dpfwp"]
+[ext_resource type="PackedScene" uid="uid://ss7edm564b6a" path="res://Objects/EnemyStructures/ExpansionPresets/ExpansionPreset0.tscn" id="3_d7uds"]
+[ext_resource type="PackedScene" uid="uid://cxrvov27bo5ok" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_1.tscn" id="4_0f7ws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw51i"]
 size = Vector2(51, 46)
@@ -12,10 +15,14 @@ bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gu4d"]
 bg_color = Color(1, 0.117647, 0.14902, 1)
 
-[node name="ControllCenter" type="StaticBody2D" node_paths=PackedStringArray("hp_bar") groups=["Turret"]]
+[node name="ControllCenter" type="StaticBody2D" node_paths=PackedStringArray("hp_bar", "expansion_timer") groups=["Turret"]]
 collision_layer = 2
 script = ExtResource("1_6jqpc")
 hp_bar = NodePath("HPbar")
+expansion_timer = NodePath("Timer")
+expansion_cd = 5.0
+expansion_drone = ExtResource("2_3gvoy")
+expansion_presets = Array[PackedScene]([ExtResource("3_d7uds"), ExtResource("4_0f7ws")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_dpfwp")
@@ -33,3 +40,11 @@ offset_bottom = 34.0
 theme_override_styles/background = SubResource("StyleBoxFlat_lnnsi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8gu4d")
 show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="expansion_complete" from="." to="." method="_on_expansion_complete"]
+[connection signal="rebuild" from="." to="." method="_on_rebuild"]
+[connection signal="ship_destoryed" from="." to="." method="_on_ship_destoryed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

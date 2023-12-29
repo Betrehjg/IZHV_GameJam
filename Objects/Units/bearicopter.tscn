@@ -191,6 +191,18 @@ position = Vector2(-22, 24)
 texture = ExtResource("6_llxye")
 offset = Vector2(22, -24)
 
+[node name="HpBar" parent="." index="2"]
+offset_left = -46.0
+offset_top = 36.0
+offset_right = 46.0
+offset_bottom = 39.0
+
+[node name="HoneyBar" parent="." index="3"]
+offset_left = -46.0
+offset_top = 40.0
+offset_right = 46.0
+offset_bottom = 42.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 root_node = NodePath("../Out")
 libraries = {

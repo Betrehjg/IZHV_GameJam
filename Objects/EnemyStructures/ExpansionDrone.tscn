@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://8xyyw2jhii55"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyScripts/ExpansionDrone.gd" id="1_3ymt5"]
+[ext_resource type="Texture2D" uid="uid://bweachrigo650" path="res://Sprites/EnemyObjects/ExpansionDrone.png" id="1_xm6s7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vv20"]
+radius = 38.1182
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm2u8"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixmfw"]
+bg_color = Color(1, 0.117647, 0.14902, 1)
+
+[node name="ExpansionDrone" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar") groups=["Turret"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_3ymt5")
+hp_bar = NodePath("HPBar")
+speed = 50
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xm6s7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2vv20")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -34.0
+offset_top = 25.0
+offset_right = 33.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nm2u8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ixmfw")
+show_percentage = false

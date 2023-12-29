@@ -11,7 +11,7 @@ var last_target_pos = null
 @export var smoke_particles: PackedScene
 
 func _ready():
-	smoke_particles = load("res://particles/rocketSmoke.tscn")
+	smoke_particles = load("res://particles/RocketSmoke.tscn")
 	super._ready()
 
 func get_current_target():
