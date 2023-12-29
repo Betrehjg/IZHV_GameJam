@@ -40,7 +40,7 @@ func build_expansion():
 	if is_rebuild:
 		target.queue_free()
 		
-	get_tree().root.get_node("World/Objects/Units").add_child(expansion)
+	get_tree().root.get_node("World/Objects/enemies").add_child(expansion)
 	expansion_complete.emit(is_rebuild)
 	queue_free()
 	

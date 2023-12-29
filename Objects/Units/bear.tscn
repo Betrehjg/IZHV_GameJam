@@ -4,18 +4,20 @@
 [ext_resource type="Script" path="res://Scripts/UnitScripts/Bear.gd" id="1_uq6gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r803"]
-size = Vector2(46, 16)
+size = Vector2(59, 23)
 
 [node name="Bear" node_paths=PackedStringArray("hit_area") instance=ExtResource("1_fqjwa")]
 script = ExtResource("1_uq6gv")
 hit_area = NodePath("Rotate/hitArea")
 move_speed = 250.0
-max_hp = 200
-attack_cd = 1.0
+max_hp = 150
 dmg = 11
 
 [node name="Collision" parent="." index="0"]
 visible = true
+
+[node name="Sprite" parent="Rotate" index="0"]
+animation = &"Idle"
 
 [node name="hitArea" type="Area2D" parent="Rotate" index="2"]
 position = Vector2(-9, 0)
@@ -23,5 +25,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="hitShape" type="CollisionShape2D" parent="Rotate/hitArea" index="0"]
-position = Vector2(35, -1)
+position = Vector2(38.5, -1.5)
 shape = SubResource("RectangleShape2D_2r803")
+
+[connection signal="frame_changed" from="Rotate/Sprite" to="." method="_on_sprite_frame_changed"]

@@ -16,7 +16,6 @@ my_type = "Beargant"
 
 [node name="Sprite" parent="Rotate" index="0"]
 position = Vector2(-1.4, 0.2)
-animation = &"Idle"
 
 [node name="hitShape" parent="Rotate/hitArea" index="0"]
 position = Vector2(32, -1)
@@ -33,4 +32,3 @@ offset_bottom = 12.0
 points = PackedVector2Array(19, 1, 19, 0)
 
 [connection signal="animation_looped" from="Rotate/Sprite" to="." method="_on_bear_sprite_animation_finished"]
-[connection signal="frame_changed" from="Rotate/Sprite" to="." method="_on_sprite_frame_changed"]
