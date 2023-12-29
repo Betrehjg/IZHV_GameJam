@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3wfbbwedanto"]
+
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/wall.tscn" id="1_tobot"]
+
+[node name="Wall" instance=ExtResource("1_tobot")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5708
+
+[node name="Collision" parent="." index="1"]
+rotation = 1.5708
+
+[node name="HPbar" parent="." index="2"]
+visible = false

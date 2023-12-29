@@ -1,17 +1,17 @@
 [gd_scene load_steps=19 format=3 uid="uid://cs0gr72xtx73h"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_866io"]
-[ext_resource type="Texture2D" uid="uid://bmhmiwqqpumgf" path="res://Sprites/Objects/Fruits1.png" id="2_07un7"]
-[ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/TreeEmpty.png" id="2_batdm"]
-[ext_resource type="Texture2D" uid="uid://d36m6eeqb5ear" path="res://Sprites/Objects/Fruits2.png" id="3_60hol"]
-[ext_resource type="Texture2D" uid="uid://jov62hpk875m" path="res://Sprites/Objects/Fruits3.png" id="4_1ouw6"]
-[ext_resource type="Texture2D" uid="uid://b136phkunchs3" path="res://Sprites/Objects/Fruits4.png" id="5_7fm2m"]
-[ext_resource type="Texture2D" uid="uid://bt7xrhkpbe016" path="res://Sprites/Objects/Fruits5.png" id="6_g45l3"]
-[ext_resource type="Texture2D" uid="uid://bovxmhnk04ro" path="res://Sprites/Objects/Fruits6.png" id="7_1mhrw"]
-[ext_resource type="Texture2D" uid="uid://dbjyhvmjd4san" path="res://Sprites/Objects/Fruits7.png" id="8_qkict"]
-[ext_resource type="Texture2D" uid="uid://b27t5d2mtkid3" path="res://Sprites/Objects/Fruits8.png" id="9_6356c"]
-[ext_resource type="Texture2D" uid="uid://bj0n3wuoo5xxy" path="res://Sprites/Objects/Fruits9.png" id="10_622dg"]
-[ext_resource type="Texture2D" uid="uid://d2bsomgielsbb" path="res://Sprites/Objects/Fruits10.png" id="11_rgic4"]
+[ext_resource type="Texture2D" uid="uid://dj6n3lwwr8xyq" path="res://Sprites/Objects/Tree/TreeEmpty.png" id="1_jdc8k"]
+[ext_resource type="Texture2D" uid="uid://bmhmiwqqpumgf" path="res://Sprites/Objects/Tree/Fruits1.png" id="2_okf56"]
+[ext_resource type="Texture2D" uid="uid://d36m6eeqb5ear" path="res://Sprites/Objects/Tree/Fruits2.png" id="3_tvt4c"]
+[ext_resource type="Texture2D" uid="uid://jov62hpk875m" path="res://Sprites/Objects/Tree/Fruits3.png" id="4_s0hkp"]
+[ext_resource type="Texture2D" uid="uid://b136phkunchs3" path="res://Sprites/Objects/Tree/Fruits4.png" id="5_q1ten"]
+[ext_resource type="Texture2D" uid="uid://bt7xrhkpbe016" path="res://Sprites/Objects/Tree/Fruits5.png" id="6_4tfql"]
+[ext_resource type="Texture2D" uid="uid://bovxmhnk04ro" path="res://Sprites/Objects/Tree/Fruits6.png" id="7_n3emi"]
+[ext_resource type="Texture2D" uid="uid://dbjyhvmjd4san" path="res://Sprites/Objects/Tree/Fruits7.png" id="8_6esj3"]
+[ext_resource type="Texture2D" uid="uid://b27t5d2mtkid3" path="res://Sprites/Objects/Tree/Fruits8.png" id="9_hjh5w"]
+[ext_resource type="Texture2D" uid="uid://bj0n3wuoo5xxy" path="res://Sprites/Objects/Tree/Fruits9.png" id="10_h71ij"]
+[ext_resource type="Texture2D" uid="uid://d2bsomgielsbb" path="res://Sprites/Objects/Tree/Fruits10.png" id="11_hbdjc"]
 
 [sub_resource type="Animation" id="Animation_r7yno"]
 length = 0.001
@@ -84,34 +84,34 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_07un7")
+"texture": ExtResource("2_okf56")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_60hol")
+"texture": ExtResource("3_tvt4c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1ouw6")
+"texture": ExtResource("4_s0hkp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_7fm2m")
+"texture": ExtResource("5_q1ten")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_g45l3")
+"texture": ExtResource("6_4tfql")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_1mhrw")
+"texture": ExtResource("7_n3emi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_qkict")
+"texture": ExtResource("8_6esj3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_6356c")
+"texture": ExtResource("9_hjh5w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_622dg")
+"texture": ExtResource("10_h71ij")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_rgic4")
+"texture": ExtResource("11_hbdjc")
 }],
 "loop": false,
 "name": &"Fruits",
@@ -135,7 +135,7 @@ shape = SubResource("RectangleShape2D_arb7e")
 
 [node name="TreeEmptySprite" type="Sprite2D" parent="."]
 position = Vector2(-1, 30)
-texture = ExtResource("2_batdm")
+texture = ExtResource("1_jdc8k")
 offset = Vector2(1, -30)
 
 [node name="TreeFruitsSprite" type="AnimatedSprite2D" parent="."]

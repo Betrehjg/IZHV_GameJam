@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bovxmhnk04ro"
-path="res://.godot/imported/Fruits6.png-1b59fec18ace2314f65269fc10e52d41.ctex"
+uid="uid://qbabrkkjg8fa"
+path="res://.godot/imported/ControllCentre.png-ae896db0da752eac2dcebac32cdb43e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Fruits6.png"
-dest_files=["res://.godot/imported/Fruits6.png-1b59fec18ace2314f65269fc10e52d41.ctex"]
+source_file="res://Sprites/Objects/ControllCentre.png"
+dest_files=["res://.godot/imported/ControllCentre.png-ae896db0da752eac2dcebac32cdb43e1.ctex"]
 
 [params]
 

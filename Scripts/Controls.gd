@@ -5,6 +5,8 @@ var selected = []
 var start_pos = Vector2.ZERO
 var end_pos = Vector2.ZERO
 
+@export var pause_menu: CanvasLayer
+
 enum Command {ATTACK, STOP, SET_TARGET, MOVE, HARVEST, REPLICATE}
 
 func _process(delta):

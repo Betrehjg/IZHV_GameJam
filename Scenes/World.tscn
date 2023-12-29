@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxmywrvjkobam"]
+[gd_scene load_steps=15 format=3 uid="uid://dxmywrvjkobam"]
 
 [ext_resource type="Script" path="res://Scripts/Controls.gd" id="1_80v7l"]
 [ext_resource type="TileSet" uid="uid://437nm4boj6l7" path="res://Tilesets/worldTiles.tres" id="1_bnqig"]
 [ext_resource type="PackedScene" uid="uid://b2pre57et01d5" path="res://Objects/bear.tscn" id="2_gdvip"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.gd" id="3_nau8d"]
 [ext_resource type="PackedScene" uid="uid://cs0gr72xtx73h" path="res://Objects/tree.tscn" id="3_u33se"]
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/wall.tscn" id="4_qysuy"]
+[ext_resource type="PackedScene" uid="uid://cefcgno4nn45r" path="res://Objects/controll_center.tscn" id="4_rrtln"]
 [ext_resource type="TileSet" uid="uid://uthrdqsigkv0" path="res://Tilesets/FogTilemap.tres" id="6_w4qxv"]
 [ext_resource type="Script" path="res://Scripts/FogControll.gd" id="7_g60g4"]
 [ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/Turrets/rocket_turret.tscn" id="8_ovb0n"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="9_y07bn"]
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/Turrets/turret.tscn" id="12_xaapm"]
+[ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/Wall_vertical.tscn" id="13_l0w7r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uog3u"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.517647)
 
 [node name="World" type="Node2D"]
 
@@ -25,7 +33,6 @@ y_sort_enabled = true
 
 [node name="Bear" parent="Objects/Units" instance=ExtResource("2_gdvip")]
 position = Vector2(-153, -451)
-max_hp = 10000
 
 [node name="Bear2" parent="Objects/Units" instance=ExtResource("2_gdvip")]
 position = Vector2(-313, -447)
@@ -59,6 +66,110 @@ position = Vector2(240, -692)
 y_sort_enabled = true
 position = Vector2(37, -806)
 
+[node name="enemies" type="Node2D" parent="Objects"]
+y_sort_enabled = true
+
+[node name="Wall5" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-871, 444)
+rotation = -3.14159
+
+[node name="Wall6" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-947, 444)
+rotation = -3.14159
+
+[node name="Wall" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-869, 326)
+
+[node name="Wall3" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-948, 324)
+
+[node name="ControllCenter" parent="Objects/enemies" instance=ExtResource("4_rrtln")]
+position = Vector2(-909, 382)
+
+[node name="Turret" parent="Objects/enemies" instance=ExtResource("12_xaapm")]
+position = Vector2(-767, 377)
+
+[node name="Turret2" parent="Objects/enemies" instance=ExtResource("12_xaapm")]
+position = Vector2(-1069, 373)
+
+[node name="Turret3" parent="Objects/enemies" instance=ExtResource("8_ovb0n")]
+position = Vector2(-814, 499)
+
+[node name="Turret4" parent="Objects/enemies" instance=ExtResource("8_ovb0n")]
+position = Vector2(-973, 498)
+
+[node name="Turret5" parent="Objects/enemies" instance=ExtResource("8_ovb0n")]
+position = Vector2(-988, 252)
+
+[node name="Turret6" parent="Objects/enemies" instance=ExtResource("8_ovb0n")]
+position = Vector2(-844, 253)
+
+[node name="Wall2" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-1070, 181)
+
+[node name="Wall4" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-976, 181)
+
+[node name="Wall7" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-886, 181)
+
+[node name="Wall8" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-801, 184)
+
+[node name="Wall9" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-710, 174)
+
+[node name="Wall10" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-739, 576)
+
+[node name="Wall11" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-819, 575)
+
+[node name="Wall12" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-909, 574)
+
+[node name="Wall13" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-1004, 576)
+
+[node name="Wall14" parent="Objects/enemies" instance=ExtResource("4_qysuy")]
+position = Vector2(-1083, 573)
+
+[node name="Wall15" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-835, 384)
+
+[node name="Wall16" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-974, 381)
+
+[node name="Wall17" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-684, 387)
+
+[node name="Wall18" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-685, 312)
+
+[node name="Wall19" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-685, 234)
+
+[node name="Wall20" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-685, 456)
+
+[node name="Wall21" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-1138, 517)
+
+[node name="Wall22" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-1138, 439)
+
+[node name="Wall23" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-1139, 367)
+
+[node name="Wall24" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-1138, 295)
+
+[node name="Wall25" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-1138, 214)
+
+[node name="Wall26" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
+position = Vector2(-680, 531)
+
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
@@ -78,7 +189,44 @@ metadata/_edit_lock_ = true
 script = ExtResource("1_80v7l")
 metadata/_edit_lock_ = true
 
-[node name="Turret" parent="." instance=ExtResource("8_ovb0n")]
-position = Vector2(-573, 34)
-explosion_radius = 0.0
-smoke_particles = null
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("9_y07bn")
+
+[node name="Panel" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uog3u")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="Restart" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="Exit" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Continue" to="UI" method="_on_continue_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Restart" to="UI" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Exit" to="UI" method="_on_exit_pressed"]

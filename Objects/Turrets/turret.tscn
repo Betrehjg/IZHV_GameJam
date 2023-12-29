@@ -12,10 +12,10 @@ size = Vector2(55, 54)
 radius = 392.703
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qliue"]
-bg_color = Color(0.290196, 0.290196, 0.290196, 1)
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcjrg"]
-bg_color = Color(0.858824, 0.431373, 0.388235, 1)
+bg_color = Color(1, 0.117647, 0.14902, 1)
 
 [node name="Turret" type="StaticBody2D" node_paths=PackedStringArray("range_collision", "turret_top", "attack_timer", "hpBar") groups=["Turret"]]
 collision_layer = 2
@@ -59,7 +59,7 @@ visible = false
 offset_left = -32.0
 offset_top = 21.0
 offset_right = 36.0
-offset_bottom = 25.0
+offset_bottom = 24.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qliue")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bcjrg")
 show_percentage = false

@@ -3,7 +3,6 @@ extends "res://Scripts/Unit.gd"
 @export var hit_area: Area2D
 @export var bonk_timer: Timer
 
-
 func _ready():
 	super._ready()
 	hit_area.monitoring = false

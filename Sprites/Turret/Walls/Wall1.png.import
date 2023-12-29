@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwoj87k2xjp3n"
-path="res://.godot/imported/Wall.png-0034935af63c6ada4e25cae2613653b2.ctex"
+uid="uid://boq3t8cj0246o"
+path="res://.godot/imported/Wall1.png-d33566fe80cdc029b62f9628e5d1e049.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tiles/Wall.png"
-dest_files=["res://.godot/imported/Wall.png-0034935af63c6ada4e25cae2613653b2.ctex"]
+source_file="res://Sprites/Turret/Walls/Wall1.png"
+dest_files=["res://.godot/imported/Wall1.png-d33566fe80cdc029b62f9628e5d1e049.ctex"]
 
 [params]
 

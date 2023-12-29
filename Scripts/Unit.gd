@@ -50,7 +50,8 @@ func take_dmg(dmg: float):
 		var particles = death_particles.instantiate()
 		particles.global_position = global_position
 		get_tree().root.add_child(particles)
-		queue_free()
+		Replicator.check_game_end()
+		queue_free()	
 	else:
 		var particles = hit_particles.instantiate()
 		particles.global_position = global_position

@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://x3ikx3dwmwh4"]
+
+[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_ly0lg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0dwd"]
+bg_color = Color(0.184314, 0.0117647, 0.0235294, 1)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ly0lg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0dwd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.342
+offset_right = 2.0
+offset_bottom = -0.240005
+theme_override_font_sizes/font_size = 80
+text = "Bear Defenders"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+anchor_top = 0.361
+anchor_right = 1.0
+anchor_bottom = 0.999
+offset_top = 0.0799866
+offset_right = 2.0
+offset_bottom = -0.280029
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Start Game"
+
+[node name="EndGame" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "End Game"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
