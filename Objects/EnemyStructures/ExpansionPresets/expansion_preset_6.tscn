@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbh2q8vbyxptw"]
+
+[ext_resource type="Script" path="res://Scripts/expansion_controll.gd" id="1_65w72"]
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="1_iwsem"]
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/EnemyStructures/wall.tscn" id="2_6gwla"]
+[ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="3_kjeks"]
+
+[node name="ExpansionPreset6" type="Node2D"]
+script = ExtResource("1_65w72")
+
+[node name="Turret" parent="." instance=ExtResource("1_iwsem")]
+position = Vector2(-3, 9)
+
+[node name="Wall" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(-3, -152)
+
+[node name="Wall2" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(-8, 148)
+
+[node name="Wall3" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(78, 151)
+
+[node name="Wall4" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(140, 98)
+max_hp = 100
+
+[node name="Wall5" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(143, 12)
+max_hp = 100
+
+[node name="Wall6" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(143, -66)
+max_hp = 100
+
+[node name="Wall7" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(-131, 83)
+max_hp = 100
+
+[node name="Wall8" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(-130, 10)
+max_hp = 100
+
+[node name="Wall9" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(-132, -69)
+max_hp = 100
+
+[node name="Wall10" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(-87, 142)
+
+[node name="Wall11" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(-89, -147)
+
+[node name="Wall12" parent="." instance=ExtResource("2_6gwla")]
+position = Vector2(88, -149)
+
+[node name="Wall13" parent="." instance=ExtResource("3_kjeks")]
+position = Vector2(145, -139)
+max_hp = 100

@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://ti1aoha3rs5y"]
+
+[ext_resource type="Script" path="res://Scripts/expansion_controll.gd" id="1_kcc1q"]
+[ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/EnemyStructures/rocket_turret.tscn" id="1_lfwyg"]
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/EnemyStructures/wall.tscn" id="2_jnw2m"]
+[ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="3_haeuc"]
+
+[node name="RocketExpansion4" type="Node2D"]
+script = ExtResource("1_kcc1q")
+
+[node name="Turret" parent="." instance=ExtResource("1_lfwyg")]
+position = Vector2(-187, 2)
+fire_range = 300.0
+
+[node name="Turret2" parent="." instance=ExtResource("1_lfwyg")]
+position = Vector2(-102, 5)
+fire_range = 300.0
+
+[node name="Turret3" parent="." instance=ExtResource("1_lfwyg")]
+position = Vector2(-21, 5)
+fire_range = 300.0
+
+[node name="Turret4" parent="." instance=ExtResource("1_lfwyg")]
+position = Vector2(65, 6)
+fire_range = 300.0
+
+[node name="Turret5" parent="." instance=ExtResource("1_lfwyg")]
+position = Vector2(152, 9)
+fire_range = 300.0
+
+[node name="Wall" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-195, -53)
+
+[node name="Wall2" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-116, -53)
+
+[node name="Wall3" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-38, -51)
+
+[node name="Wall4" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(41, -49)
+
+[node name="Wall5" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(138, -52)
+
+[node name="Wall6" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-193, 62)
+
+[node name="Wall7" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-112, 62)
+
+[node name="Wall8" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(-30, 60)
+
+[node name="Wall9" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(46, 60)
+
+[node name="Wall10" parent="." instance=ExtResource("2_jnw2m")]
+position = Vector2(142, 61)
+
+[node name="Wall11" parent="." instance=ExtResource("3_haeuc")]
+position = Vector2(-246, 6)
+max_hp = 100
+
+[node name="Wall12" parent="." instance=ExtResource("3_haeuc")]
+position = Vector2(211, 0)
+max_hp = 100

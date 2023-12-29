@@ -4,12 +4,15 @@
 [ext_resource type="Script" path="res://Scripts/UnitScripts/Bear.gd" id="1_uq6gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r803"]
-size = Vector2(40, 16)
+size = Vector2(46, 16)
 
 [node name="Bear" node_paths=PackedStringArray("hit_area") instance=ExtResource("1_fqjwa")]
 script = ExtResource("1_uq6gv")
 hit_area = NodePath("Rotate/hitArea")
-max_hp = 111111
+move_speed = 250.0
+max_hp = 200
+attack_cd = 1.0
+dmg = 11
 
 [node name="Collision" parent="." index="0"]
 visible = true

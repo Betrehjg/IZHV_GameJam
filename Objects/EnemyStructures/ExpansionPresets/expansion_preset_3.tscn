@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://rdcoq0lxc1ew"]
+
+[ext_resource type="Script" path="res://Scripts/expansion_controll.gd" id="1_5y1wk"]
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="1_bu3mt"]
+[ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/EnemyStructures/rocket_turret.tscn" id="2_ko56l"]
+
+[node name="ExpansionPreset3" type="Node2D"]
+script = ExtResource("1_5y1wk")
+
+[node name="Turret2" parent="." instance=ExtResource("1_bu3mt")]
+position = Vector2(64, -108)
+
+[node name="Turret3" parent="." instance=ExtResource("2_ko56l")]
+position = Vector2(-11, 7)
+fire_range = 300.0
+
+[node name="Turret4" parent="." instance=ExtResource("1_bu3mt")]
+position = Vector2(74, 93)
+
+[node name="Turret5" parent="." instance=ExtResource("1_bu3mt")]
+position = Vector2(-105, 87)
+
+[node name="Turret" parent="." instance=ExtResource("1_bu3mt")]
+position = Vector2(-101, -99)

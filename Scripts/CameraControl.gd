@@ -22,9 +22,9 @@ func _input(event):
 	var zoom_vector = get_zoom()
 	
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP :
+		if event.is_action("ZoomOut") :
 			zoom_vector -= Vector2(zoom_speed, zoom_speed)
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+		if event.is_action("ZoomIn"):
 			zoom_vector += Vector2(zoom_speed, zoom_speed)
 
 	zoom_vector.x = clamp(zoom_vector.x, min_zoom, max_zoom)

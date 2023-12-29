@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cefcgno4nn45r"]
+[gd_scene load_steps=16 format=3 uid="uid://cefcgno4nn45r"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyScripts/controll_center.gd" id="1_6jqpc"]
 [ext_resource type="PackedScene" uid="uid://8xyyw2jhii55" path="res://Objects/EnemyStructures/ExpansionDrone.tscn" id="2_3gvoy"]
 [ext_resource type="Texture2D" uid="uid://qbabrkkjg8fa" path="res://Sprites/EnemyObjects/ControllCentre.png" id="2_dpfwp"]
 [ext_resource type="PackedScene" uid="uid://ss7edm564b6a" path="res://Objects/EnemyStructures/ExpansionPresets/ExpansionPreset0.tscn" id="3_d7uds"]
 [ext_resource type="PackedScene" uid="uid://cxrvov27bo5ok" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_1.tscn" id="4_0f7ws"]
+[ext_resource type="PackedScene" uid="uid://ye56twojs4vp" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_2.tscn" id="5_c5x4e"]
+[ext_resource type="PackedScene" uid="uid://rdcoq0lxc1ew" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_3.tscn" id="6_g8m7o"]
+[ext_resource type="PackedScene" uid="uid://ti1aoha3rs5y" path="res://Objects/EnemyStructures/ExpansionPresets/rocket_expansion_4.tscn" id="7_ntk28"]
+[ext_resource type="PackedScene" uid="uid://lubljfob3bqe" path="res://Objects/EnemyStructures/ExpansionPresets/expasion_preset_5.tscn" id="8_g5jed"]
+[ext_resource type="PackedScene" uid="uid://bbh2q8vbyxptw" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_6.tscn" id="9_jb13u"]
+[ext_resource type="PackedScene" uid="uid://cv16yh8dwibum" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_7.tscn" id="10_pkuv8"]
+[ext_resource type="PackedScene" uid="uid://bolt07kidpqt" path="res://Objects/EnemyStructures/ExpansionPresets/expansion_preset_8.tscn" id="11_jtha2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw51i"]
 size = Vector2(51, 46)
@@ -20,9 +27,9 @@ collision_layer = 2
 script = ExtResource("1_6jqpc")
 hp_bar = NodePath("HPbar")
 expansion_timer = NodePath("Timer")
-expansion_cd = 5.0
+expansion_cd = 30.0
 expansion_drone = ExtResource("2_3gvoy")
-expansion_presets = Array[PackedScene]([ExtResource("3_d7uds"), ExtResource("4_0f7ws")])
+expansion_presets = Array[PackedScene]([ExtResource("3_d7uds"), ExtResource("4_0f7ws"), ExtResource("5_c5x4e"), ExtResource("6_g8m7o"), ExtResource("7_ntk28"), ExtResource("8_g5jed"), ExtResource("9_jb13u"), ExtResource("10_pkuv8"), ExtResource("11_jtha2")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_dpfwp")

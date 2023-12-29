@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxmywrvjkobam"]
+[gd_scene load_steps=17 format=3 uid="uid://dxmywrvjkobam"]
 
 [ext_resource type="Script" path="res://Scripts/Controls.gd" id="1_80v7l"]
 [ext_resource type="TileSet" uid="uid://437nm4boj6l7" path="res://Tilesets/worldTiles.tres" id="1_bnqig"]
@@ -13,8 +13,12 @@
 [ext_resource type="Script" path="res://Scripts/UIScripts/pause_menu.gd" id="9_y07bn"]
 [ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="12_xaapm"]
 [ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="13_l0w7r"]
+[ext_resource type="Script" path="res://Scenes/HowToPlayControll.gd" id="17_kahkr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uog3u"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.517647)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foawj"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 0.517647)
 
 [node name="World" type="Node2D"]
@@ -32,16 +36,19 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Bear" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(575, -609)
+position = Vector2(343, -699)
 
 [node name="Bear2" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(415, -605)
+position = Vector2(505, -690)
 
 [node name="Bear3" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(497, -717)
+position = Vector2(411, -578)
 
 [node name="Bear4" parent="Objects/Units" instance=ExtResource("2_gdvip")]
-position = Vector2(639, -735)
+position = Vector2(462, -827)
+
+[node name="Bear5" parent="Objects/Units" instance=ExtResource("2_gdvip")]
+position = Vector2(294, -814)
 
 [node name="Trees" type="Node2D" parent="Objects"]
 y_sort_enabled = true
@@ -175,7 +182,6 @@ position = Vector2(-948, 324)
 
 [node name="ControllCenter" parent="Objects/enemies" instance=ExtResource("4_rrtln")]
 position = Vector2(-909, 382)
-expansion_cd = 0.0
 
 [node name="Turret" parent="Objects/enemies" instance=ExtResource("12_xaapm")]
 position = Vector2(-767, 377)
@@ -227,39 +233,51 @@ position = Vector2(-1083, 573)
 
 [node name="Wall15" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-835, 384)
+max_hp = 100
 
 [node name="Wall16" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-974, 381)
+max_hp = 100
 
 [node name="Wall17" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-684, 387)
+max_hp = 100
 
 [node name="Wall18" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-685, 312)
+max_hp = 100
 
 [node name="Wall19" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-685, 234)
+max_hp = 100
 
 [node name="Wall20" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-685, 456)
+max_hp = 100
 
 [node name="Wall21" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-1138, 517)
+max_hp = 100
 
 [node name="Wall22" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-1138, 439)
+max_hp = 100
 
 [node name="Wall23" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-1139, 367)
+max_hp = 100
 
 [node name="Wall24" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-1138, 295)
+max_hp = 100
 
 [node name="Wall25" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-1138, 214)
+max_hp = 100
 
 [node name="Wall26" parent="Objects/enemies" instance=ExtResource("13_l0w7r")]
 position = Vector2(-680, 531)
+max_hp = 100
 
 [node name="Expansions" type="Node2D" parent="Objects"]
 
@@ -316,15 +334,18 @@ position = Vector2(432, 3)
 
 [node name="Drones" type="Node2D" parent="Objects"]
 
-[node name="Bullets" type="Node2D" parent="."]
+[node name="Bullets" type="Node2D" parent="Objects"]
+
+[node name="Particles" type="Node2D" parent="Objects"]
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
 position = Vector2(613, -568)
 script = ExtResource("3_nau8d")
+camera_speed = 11
 tilemap = NodePath("../WorldMap")
+min_zoom = 0.5
 
 [node name="Fog" type="TileMap" parent="." node_paths=PackedStringArray("world_map")]
-visible = false
 tile_set = ExtResource("6_w4qxv")
 format = 2
 script = ExtResource("7_g60g4")
@@ -336,7 +357,6 @@ script = ExtResource("1_80v7l")
 metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
 visible = false
 script = ExtResource("9_y07bn")
 
@@ -373,9 +393,111 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[node name="HowToPlay" type="CanvasLayer" parent="."]
+[node name="HowToPlay" type="CanvasLayer" parent="." node_paths=PackedStringArray("page1", "page2", "next_btn", "prev_btm", "pause_menu")]
+process_mode = 3
+script = ExtResource("17_kahkr")
+page1 = NodePath("Panel/RichTextLabel")
+page2 = NodePath("Panel/RichTextLabel2")
+next_btn = NodePath("Panel/HSplitContainer/Next")
+prev_btm = NodePath("Panel/HSplitContainer/Previous")
+pause_menu = NodePath("../UI")
+
+[node name="Panel" type="Panel" parent="HowToPlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_foawj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HowToPlay/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.85
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "[center][b]How To Play:[/b][/center]
+	Basic Controls:
+		R Mouse Button - select unit
+		R Mouse Button + drag - select multiple units
+		W, A, S, D - Camera controll
+		Esc - Pause
+		Mouse Wheel - Zoom
+	Commands for selected units:
+		L Mouse Button - select destination, target or tree
+		Shift +  L Mouse Button - queue destination, target or tree
+		Q - Attack random target in range
+		E - Stop doing everything
+		R - Replicate "
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HowToPlay/Panel"]
 visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.85
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center][b]How To Play:[/b][/center]
+	Goal: destroy enemy control centre 
+	Game Over: all your units are destroyed
+
+	All your units have 2 bars: Red for HP and Yellow for amount of honey eaten
+
+	Eat honey from tree (click on tree when units are selected), when your units eaten enough honey (black bar of honey bar) they can replicate. When replicating there is chance that unit will mutate and create 	new type.
+
+	Honey on trees replenishes over time.
+
+	Dont waste time enemies are expanding too and can destroy trees in their proximity."
+
+[node name="HSplitContainer" type="Control" parent="HowToPlay/Panel"]
+layout_mode = 1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Previous" type="Button" parent="HowToPlay/Panel/HSplitContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.2
+anchor_bottom = 0.9
+theme_override_font_sizes/font_size = 60
+text = "Prev"
+
+[node name="Start" type="Button" parent="HowToPlay/Panel/HSplitContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.9
+offset_bottom = 4.60001
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="Next" type="Button" parent="HowToPlay/Panel/HSplitContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.1
+anchor_right = 0.98
+anchor_bottom = 0.9
+theme_override_font_sizes/font_size = 60
+text = "Next"
 
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Continue" to="UI" method="_on_continue_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Exit" to="UI" method="_on_exit_pressed"]
+[connection signal="pressed" from="HowToPlay/Panel/HSplitContainer/Previous" to="HowToPlay" method="_on_previous_pressed"]
+[connection signal="pressed" from="HowToPlay/Panel/HSplitContainer/Start" to="HowToPlay" method="_on_start_pressed"]
+[connection signal="pressed" from="HowToPlay/Panel/HSplitContainer/Next" to="HowToPlay" method="_on_next_pressed"]

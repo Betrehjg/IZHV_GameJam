@@ -11,6 +11,7 @@ script = ExtResource("1_cmncx")
 
 [node name="Turret" parent="." instance=ExtResource("1_2jkio")]
 position = Vector2(-96, -84)
+fire_range = 300.0
 
 [node name="Turret2" parent="." instance=ExtResource("2_u58yk")]
 position = Vector2(-46, -9)
@@ -26,12 +27,15 @@ position = Vector2(37, 70)
 
 [node name="Turret6" parent="." instance=ExtResource("1_2jkio")]
 position = Vector2(107, 120)
+fire_range = 300.0
 
 [node name="Turret7" parent="." instance=ExtResource("1_2jkio")]
 position = Vector2(-108, 129)
+fire_range = 300.0
 
 [node name="Turret8" parent="." instance=ExtResource("1_2jkio")]
 position = Vector2(107, -62)
+fire_range = 300.0
 
 [node name="Wall" parent="." instance=ExtResource("3_6xc2q")]
 position = Vector2(-91, 190)
@@ -56,26 +60,34 @@ position = Vector2(128, -141)
 
 [node name="Wall8" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(171, -77)
+max_hp = 100
 
 [node name="Wall9" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(171, 6)
+max_hp = 100
 
 [node name="Wall10" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(172, 88)
+max_hp = 100
 
 [node name="Wall11" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(171, 174)
+max_hp = 100
 
 [node name="Wall12" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(-169, -101)
+max_hp = 100
 
 [node name="Wall13" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(-166, -22)
+max_hp = 100
 
 [node name="Wall14" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(-166, 60)
+max_hp = 100
 
 [node name="Wall15" parent="." instance=ExtResource("4_tmiec")]
 position = Vector2(-167, 158)
+max_hp = 100
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

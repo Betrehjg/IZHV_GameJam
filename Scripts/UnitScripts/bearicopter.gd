@@ -13,12 +13,13 @@ func _physics_process(delta):
 		
 func do_attack():
 	var current_target = goals[0]["target"]
-	look_at(current_target.global_position)
+	look_at_target(current_target.global_position)
 	
 	if can_attack:
 		var bullet_inst = bullet.instantiate()
 		spawn_projectile(bullet_inst, current_target.global_position)
 		can_attack = false
+		attack_timer.start(attack_cd)
 		
 func spawn_projectile(projectile:Node, target: Vector2):
 	projectile.move_speed = bullet_speed

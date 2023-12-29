@@ -20,10 +20,12 @@ bg_color = Color(1, 0.117647, 0.14902, 1)
 [node name="Turret" type="StaticBody2D" node_paths=PackedStringArray("range_collision", "turret_top", "attack_timer", "hpBar") groups=["Turret"]]
 collision_layer = 2
 script = ExtResource("1_4r2q7")
+fire_range = 500.0
 range_collision = NodePath("TurretRange/RangeCollision")
 turret_top = NodePath("TurretTop")
 attack_timer = NodePath("AtackTimer")
-bullet_dmg = 25.0
+bullet_speed = 15.0
+bullet_dmg = 20.0
 bullet_scene = ExtResource("2_vcn5x")
 hpBar = NodePath("HPBar")
 

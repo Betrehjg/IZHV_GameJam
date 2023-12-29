@@ -9,13 +9,14 @@
 
 [node name="Turret" node_paths=PackedStringArray("rocket_delay_timer", "smoke_out") instance=ExtResource("1_qyt57")]
 script = ExtResource("2_3jmwq")
-rocket_count = 5
-rocket_delay = 0.3
+rocket_count = 7
+rocket_delay = 0.2
 rocket_delay_timer = NodePath("RocketDelay")
 explosion_radius = 100.0
 smoke_out = NodePath("TurretTop/SmokeOut")
 smoke_particles = ExtResource("3_wba54")
-bullet_speed = 10.0
+fire_range = 300.0
+shoot_cd = 7.0
 bullet_dmg = 10.0
 bullet_scene = ExtResource("4_jblfm")
 

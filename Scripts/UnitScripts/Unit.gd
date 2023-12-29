@@ -228,6 +228,7 @@ func set_target(target, clear = false):
 	
 func harvest():
 	if current_honey < max_honey:
+		look_at_target(goals[0]["target"].global_position)
 		if can_attack:
 			can_attack = false
 			current_honey = min(current_honey + goals[0]["target"].eat_honey(dmg), max_honey)

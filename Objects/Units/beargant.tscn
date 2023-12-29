@@ -4,3 +4,33 @@
 
 [node name="Bear" instance=ExtResource("1_6tvco")]
 scale = Vector2(5, 5)
+min_dist_to_goal = 60
+max_hp = 750
+max_attack_range = 150.0
+attack_cd = 5.0
+dmg = 30
+max_range_to_harvest = 160.0
+max_honey = 200
+replicate_cost = 100
+my_type = "Beargant"
+
+[node name="Sprite" parent="Rotate" index="0"]
+position = Vector2(-1.4, 0.2)
+animation = &"Idle"
+
+[node name="hitShape" parent="Rotate/hitArea" index="0"]
+position = Vector2(32, -1)
+scale = Vector2(1, 1)
+
+[node name="HpBar" parent="." index="2"]
+offset_right = 14.0
+
+[node name="HoneyBar" parent="." index="3"]
+offset_right = 14.0
+offset_bottom = 12.0
+
+[node name="Line2D" parent="HoneyBar" index="0"]
+points = PackedVector2Array(19, 1, 19, 0)
+
+[connection signal="animation_looped" from="Rotate/Sprite" to="." method="_on_bear_sprite_animation_finished"]
+[connection signal="frame_changed" from="Rotate/Sprite" to="." method="_on_sprite_frame_changed"]

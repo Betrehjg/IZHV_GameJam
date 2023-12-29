@@ -15,6 +15,7 @@ bg_color = Color(1, 0.117647, 0.14902, 1)
 [node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("hp_bar") groups=["Turret"]]
 collision_layer = 2
 script = ExtResource("1_wwaqc")
+max_hp = 200
 hp_bar = NodePath("HPbar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

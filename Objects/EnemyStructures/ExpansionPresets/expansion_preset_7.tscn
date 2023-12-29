@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv16yh8dwibum"]
+
+[ext_resource type="PackedScene" uid="uid://bxorsrk21sia2" path="res://Objects/EnemyStructures/rocket_turret.tscn" id="1_7jq8q"]
+[ext_resource type="Script" path="res://Scripts/expansion_controll.gd" id="1_ubln0"]
+[ext_resource type="PackedScene" uid="uid://rys4krbobw3n" path="res://Objects/EnemyStructures/wall.tscn" id="2_mubhr"]
+[ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="3_k2pvo"]
+
+[node name="ExpansionPreset7" type="Node2D"]
+script = ExtResource("1_ubln0")
+
+[node name="Turret" parent="." instance=ExtResource("1_7jq8q")]
+position = Vector2(3, 6)
+fire_range = 300.0
+
+[node name="Wall" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(-42, 135)
+
+[node name="Wall2" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(34, 136)
+
+[node name="Wall3" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(-40, -131)
+
+[node name="Wall4" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(-148, 7)
+max_hp = 100
+
+[node name="Wall5" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(145, 2)
+max_hp = 100
+
+[node name="Wall6" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(36, -131)
+
+[node name="Wall7" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(111, 135)
+
+[node name="Wall8" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(-118, 131)
+
+[node name="Wall9" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(-118, -131)
+
+[node name="Wall10" parent="." instance=ExtResource("2_mubhr")]
+position = Vector2(117, -131)
+
+[node name="Wall11" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(-149, 77)
+max_hp = 100
+
+[node name="Wall12" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(-148, -68)
+max_hp = 100
+
+[node name="Wall13" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(147, 74)
+max_hp = 100
+
+[node name="Wall14" parent="." instance=ExtResource("3_k2pvo")]
+position = Vector2(140, -73)
+max_hp = 100

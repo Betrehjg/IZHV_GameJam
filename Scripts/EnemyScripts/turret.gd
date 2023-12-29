@@ -41,7 +41,7 @@ func spawn_projectile(projectile:Node, target: Vector2):
 	projectile.max_distance = fire_range
 	projectile.start_pos = $TurretTop/Out.global_position
 	projectile.global_position = $TurretTop/Out.global_position
-	get_tree().root.get_node("World/Bullets").add_child(projectile)
+	get_tree().root.get_node("World/Objects/Bullets").add_child(projectile)
 	
 
 func shoot():

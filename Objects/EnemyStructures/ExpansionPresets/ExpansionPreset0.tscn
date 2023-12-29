@@ -11,9 +11,11 @@ script = ExtResource("1_yblj5")
 
 [node name="Turret" parent="." instance=ExtResource("1_wxbcc")]
 position = Vector2(-45, 10)
+fire_range = 300.0
 
 [node name="Turret2" parent="." instance=ExtResource("1_wxbcc")]
 position = Vector2(40, 8)
+fire_range = 300.0
 
 [node name="Wall" parent="." instance=ExtResource("2_wdrwo")]
 position = Vector2(-46, -56)
@@ -23,6 +25,7 @@ position = Vector2(34, -56)
 
 [node name="Wall3" parent="." instance=ExtResource("3_2iec0")]
 position = Vector2(-104, 3)
+max_hp = 100
 
 [node name="Wall4" parent="." instance=ExtResource("2_wdrwo")]
 position = Vector2(-51, 66)
@@ -32,8 +35,10 @@ position = Vector2(34, 69)
 
 [node name="Wall6" parent="." instance=ExtResource("3_2iec0")]
 position = Vector2(98, 56)
+max_hp = 100
 
 [node name="Wall7" parent="." instance=ExtResource("3_2iec0")]
 position = Vector2(98, -34)
+max_hp = 100
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
