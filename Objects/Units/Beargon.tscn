@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=3 uid="uid://xoa5jik2xgk8"]
+
+[ext_resource type="PackedScene" uid="uid://1nfturcuhi5" path="res://Objects/Units/unit.tscn" id="1_g4m71"]
+[ext_resource type="Script" path="res://Scripts/UnitScripts/Beargon.gd" id="2_8n73m"]
+[ext_resource type="Texture2D" uid="uid://7jjuoxq47flr" path="res://Sprites/Units/Bear/Bear.png" id="3_pe43y"]
+[ext_resource type="Texture2D" uid="uid://crktarpnm5ojx" path="res://Sprites/Units/Bear/BearBong1.png" id="4_3oa68"]
+[ext_resource type="Texture2D" uid="uid://1gda13amjp4e" path="res://Sprites/Units/Bear/BearBong2.png" id="5_ba84l"]
+[ext_resource type="Texture2D" uid="uid://btojiim0thdhe" path="res://Sprites/Units/Bear/BearBong3.png" id="6_5ba82"]
+[ext_resource type="Texture2D" uid="uid://bmist47cwip87" path="res://Sprites/Units/Bear/BearBong4.png" id="7_6idr8"]
+[ext_resource type="Texture2D" uid="uid://ca5sdi23teps8" path="res://Sprites/Units/Beargon/Wings.png" id="8_e3ima"]
+[ext_resource type="Texture2D" uid="uid://b5gl8gnvulnfo" path="res://Sprites/Units/Beargon/WingsDown.png" id="9_rk5bu"]
+[ext_resource type="Texture2D" uid="uid://ct3enpf7uc3ip" path="res://Sprites/Units/Beargon/WingsUp.png" id="10_eg6lp"]
+[ext_resource type="Texture2D" uid="uid://ge7nimeyq4ef" path="res://Sprites/Units/Beargon/Flame.png" id="11_yibfk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dslsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pe43y")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pe43y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3oa68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ba84l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5ba82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6idr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5ba82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ba84l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3oa68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pe43y")
+}],
+"loop": false,
+"name": &"Harvest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pe43y")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6p85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e3ima")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e3ima")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rk5bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e3ima")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eg6lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e3ima")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[node name="Unit" node_paths=PackedStringArray("wings", "fire_breath", "breath_timer") instance=ExtResource("1_g4m71")]
+script = ExtResource("2_8n73m")
+wings = NodePath("Rotate/Wings")
+fire_breath = NodePath("Rotate/FireBreath")
+breath_timer = NodePath("BreathTimer")
+breath_dmg_cd = 0.5
+my_type = "Beargon"
+
+[node name="Sprite" parent="Rotate" index="0"]
+sprite_frames = SubResource("SpriteFrames_dslsn")
+
+[node name="Wings" type="AnimatedSprite2D" parent="Rotate" index="2"]
+sprite_frames = SubResource("SpriteFrames_x6p85")
+animation = &"Move"
+
+[node name="FireBreath" type="Node2D" parent="Rotate" index="3"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotate/FireBreath" index="0"]
+modulate = Color(1, 1, 1, 0.427451)
+position = Vector2(68, -4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_yibfk")
+
+[node name="Area2D" type="Area2D" parent="Rotate/FireBreath" index="1"]
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotate/FireBreath/Area2D" index="0"]
+polygon = PackedVector2Array(17, 1, 46, -23, 100, -36, 102, 14, 94, 44, 48, 31)
+
+[node name="BreathTimer" type="Timer" parent="." index="5"]
+
+[connection signal="timeout" from="BreathTimer" to="." method="_on_breath_timer_timeout"]

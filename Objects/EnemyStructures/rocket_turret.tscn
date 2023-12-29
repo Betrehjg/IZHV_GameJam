@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxorsrk21sia2"]
+
+[ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="1_qyt57"]
+[ext_resource type="Script" path="res://Scripts/EnemyScripts/rocket_turret.gd" id="2_3jmwq"]
+[ext_resource type="PackedScene" uid="uid://fieiff2dwqa4" path="res://particles/RocketSmoke.tscn" id="3_wba54"]
+[ext_resource type="PackedScene" uid="uid://cailmcwldoxcu" path="res://Objects/projectile/rocket.tscn" id="4_jblfm"]
+[ext_resource type="Texture2D" uid="uid://dehui0qvjc637" path="res://Sprites/EnemyObjects/Rocket/TurretRocketBase.png" id="5_mmciv"]
+[ext_resource type="Texture2D" uid="uid://c42l6sn318amf" path="res://Sprites/EnemyObjects/Rocket/TurretRocketTop.png" id="6_xpqi3"]
+
+[node name="Turret" node_paths=PackedStringArray("rocket_delay_timer", "smoke_out") instance=ExtResource("1_qyt57")]
+script = ExtResource("2_3jmwq")
+rocket_count = 5
+rocket_delay = 0.3
+rocket_delay_timer = NodePath("RocketDelay")
+explosion_radius = 100.0
+smoke_out = NodePath("TurretTop/SmokeOut")
+smoke_particles = ExtResource("3_wba54")
+bullet_speed = 10.0
+bullet_dmg = 10.0
+bullet_scene = ExtResource("4_jblfm")
+
+[node name="TurretBase" parent="." index="0"]
+texture = ExtResource("5_mmciv")
+
+[node name="TurretTop" parent="." index="1"]
+position = Vector2(-6, -2)
+texture = ExtResource("6_xpqi3")
+offset = Vector2(-1.39869, -1.90106)
+
+[node name="Out" parent="TurretTop" index="0"]
+position = Vector2(7.13685, -0.0726099)
+
+[node name="SmokeOut" type="Node2D" parent="TurretTop" index="1"]
+position = Vector2(2, 2)
+
+[node name="Collision" parent="." index="2"]
+position = Vector2(-2.5, 0)
+
+[node name="RocketDelay" type="Timer" parent="." index="6"]
+one_shot = true
+
+[connection signal="timeout" from="RocketDelay" to="." method="_on_rocket_delay_timeout"]

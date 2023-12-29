@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://254tfqevvbp5"]
+
+[ext_resource type="PackedScene" uid="uid://rlwhf4bvjeq8" path="res://Objects/projectile/bullet.tscn" id="1_fpurj"]
+
+[node name="Bullet" instance=ExtResource("1_fpurj")]
+
+[node name="Collision" parent="." index="1"]
+collision_mask = 2

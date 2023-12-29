@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://f0m2t805ebyd"]
+
+[ext_resource type="PackedScene" uid="uid://b2pre57et01d5" path="res://Objects/Units/bear.tscn" id="1_6tvco"]
+
+[node name="Bear" instance=ExtResource("1_6tvco")]
+scale = Vector2(5, 5)

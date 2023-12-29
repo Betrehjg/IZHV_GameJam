@@ -1,0 +1,173 @@
+[gd_scene load_steps=17 format=3 uid="uid://1nfturcuhi5"]
+
+[ext_resource type="Script" path="res://Scripts/UnitScripts/Unit.gd" id="1_orysy"]
+[ext_resource type="PackedScene" uid="uid://dxrqab3pjoa5b" path="res://particles/DeathParticles.tscn" id="2_xjy2w"]
+[ext_resource type="PackedScene" uid="uid://d0sfxsjc6a14u" path="res://particles/HitParticles.tscn" id="3_h2gjc"]
+[ext_resource type="Texture2D" uid="uid://7jjuoxq47flr" path="res://Sprites/Units/Bear/Bear.png" id="4_4he1p"]
+[ext_resource type="Texture2D" uid="uid://crktarpnm5ojx" path="res://Sprites/Units/Bear/BearBong1.png" id="5_4xev5"]
+[ext_resource type="Texture2D" uid="uid://1gda13amjp4e" path="res://Sprites/Units/Bear/BearBong2.png" id="6_pu5gy"]
+[ext_resource type="Texture2D" uid="uid://btojiim0thdhe" path="res://Sprites/Units/Bear/BearBong3.png" id="7_kcool"]
+[ext_resource type="Texture2D" uid="uid://bmist47cwip87" path="res://Sprites/Units/Bear/BearBong4.png" id="8_tu36g"]
+[ext_resource type="Texture2D" uid="uid://d2thivgaddt5a" path="res://Sprites/Units/Bear/BearSelect.png" id="9_tccrr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2jch"]
+radius = 13.0
+height = 40.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbj86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4he1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xev5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pu5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kcool")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tu36g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kcool")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pu5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xev5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4he1p")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4he1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xev5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pu5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kcool")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tu36g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kcool")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pu5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xev5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4he1p")
+}],
+"loop": false,
+"name": &"Harvest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4he1p")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy240"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5ne2"]
+bg_color = Color(1, 0.117647, 0.14902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy2kd"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3i6g"]
+bg_color = Color(0.843137, 0.623529, 0.14902, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hy774"]
+radius = 30.0
+
+[node name="Unit" type="CharacterBody2D" node_paths=PackedStringArray("select_highlight", "anim_sprite", "hp_bar", "range_area", "attack_timer", "honey_bar")]
+collision_mask = 3
+script = ExtResource("1_orysy")
+select_highlight = NodePath("Rotate/Selected")
+anim_sprite = NodePath("Rotate/Sprite")
+death_particles = ExtResource("2_xjy2w")
+hit_particles = ExtResource("3_h2gjc")
+hp_bar = NodePath("HpBar")
+range_area = NodePath("AttackRange/RangeShape")
+attack_timer = NodePath("AttackCD")
+honey_bar = NodePath("HoneyBar")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s2jch")
+
+[node name="Rotate" type="Node2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Rotate"]
+sprite_frames = SubResource("SpriteFrames_nbj86")
+animation = &"Idle"
+
+[node name="Selected" type="Sprite2D" parent="Rotate"]
+visible = false
+texture = ExtResource("9_tccrr")
+
+[node name="HpBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = 9.0
+offset_right = 14.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vy240")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u5ne2")
+value = 50.0
+show_percentage = false
+
+[node name="HoneyBar" type="ProgressBar" parent="."]
+offset_left = -24.0
+offset_top = 11.0
+offset_right = 14.0
+offset_bottom = 12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vy2kd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t3i6g")
+value = 50.0
+show_percentage = false
+
+[node name="AttackRange" type="Area2D" parent="."]
+visible = false
+position = Vector2(3, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="RangeShape" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(-10, 0)
+shape = SubResource("CircleShape2D_hy774")
+
+[node name="AttackCD" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_looped" from="Rotate/Sprite" to="." method="_on_bear_sprite_animation_finished"]
+[connection signal="frame_changed" from="Rotate/Sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="AttackCD" to="." method="_on_attack_cd_timeout"]

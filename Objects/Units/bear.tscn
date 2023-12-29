@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2pre57et01d5"]
+
+[ext_resource type="PackedScene" uid="uid://1nfturcuhi5" path="res://Objects/Units/unit.tscn" id="1_fqjwa"]
+[ext_resource type="Script" path="res://Scripts/UnitScripts/Bear.gd" id="1_uq6gv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r803"]
+size = Vector2(40, 16)
+
+[node name="Bear" node_paths=PackedStringArray("hit_area", "bonk_timer") instance=ExtResource("1_fqjwa")]
+script = ExtResource("1_uq6gv")
+hit_area = NodePath("Rotate/hitArea")
+bonk_timer = NodePath("BonkTimer")
+max_hp = 111111
+
+[node name="Collision" parent="." index="0"]
+visible = true
+
+[node name="hitArea" type="Area2D" parent="Rotate" index="2"]
+visible = false
+position = Vector2(-9, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="hitShape" type="CollisionShape2D" parent="Rotate/hitArea" index="0"]
+position = Vector2(35, -1)
+shape = SubResource("RectangleShape2D_2r803")
+
+[node name="BonkTimer" type="Timer" parent="." index="6"]

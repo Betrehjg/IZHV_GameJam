@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cefcgno4nn45r"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyScripts/controll_center.gd" id="1_6jqpc"]
+[ext_resource type="Texture2D" uid="uid://qbabrkkjg8fa" path="res://Sprites/EnemyObjects/ControllCentre.png" id="2_dpfwp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw51i"]
+size = Vector2(51, 46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnnsi"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gu4d"]
+bg_color = Color(1, 0.117647, 0.14902, 1)
+
+[node name="ControllCenter" type="StaticBody2D" node_paths=PackedStringArray("hp_bar") groups=["Turret"]]
+collision_layer = 2
+script = ExtResource("1_6jqpc")
+hp_bar = NodePath("HPbar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dpfwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 8)
+shape = SubResource("RectangleShape2D_aw51i")
+
+[node name="HPbar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -27.0
+offset_top = 33.0
+offset_right = 41.0
+offset_bottom = 34.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lnnsi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8gu4d")
+show_percentage = false

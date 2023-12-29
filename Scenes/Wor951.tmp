@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxmywrvjkobam"]
+[gd_scene load_steps=16 format=3 uid="uid://dxmywrvjkobam"]
 
 [ext_resource type="Script" path="res://Scripts/Controls.gd" id="1_80v7l"]
 [ext_resource type="TileSet" uid="uid://437nm4boj6l7" path="res://Tilesets/worldTiles.tres" id="1_bnqig"]
@@ -13,9 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/UIScripts/pause_menu.gd" id="9_y07bn"]
 [ext_resource type="PackedScene" uid="uid://bxmrvuatqmjif" path="res://Objects/EnemyStructures/turret.tscn" id="12_xaapm"]
 [ext_resource type="PackedScene" uid="uid://c3wfbbwedanto" path="res://Objects/EnemyStructures/Wall_vertical.tscn" id="13_l0w7r"]
-[ext_resource type="PackedScene" uid="uid://xoa5jik2xgk8" path="res://Objects/Units/Beargon.tscn" id="14_6tqar"]
-[ext_resource type="PackedScene" uid="uid://f0m2t805ebyd" path="res://Objects/Units/beargant.tscn" id="15_2vlc2"]
-[ext_resource type="PackedScene" uid="uid://7wjypi66thv5" path="res://Objects/Units/bearicopter.tscn" id="16_8rh2i"]
+[ext_resource type="PackedScene" uid="uid://dk0u2k4ues4hg" path="res://Objects/Units/beargant.tscn" id="14_lx8gg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uog3u"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 0.517647)
@@ -233,16 +231,8 @@ text = "Exit"
 [node name="HowToPlay" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="Unit" parent="." instance=ExtResource("14_6tqar")]
-position = Vector2(-685, -381)
-max_hp = 111111111
-
-[node name="Bear" parent="." instance=ExtResource("15_2vlc2")]
-position = Vector2(-616, -576)
-max_hp = 100
-
-[node name="Unit2" parent="." instance=ExtResource("16_8rh2i")]
-position = Vector2(-497, -380)
+[node name="Bear" parent="." instance=ExtResource("14_lx8gg")]
+position = Vector2(-679, -242)
 
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Continue" to="UI" method="_on_continue_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/Restart" to="UI" method="_on_restart_pressed"]
